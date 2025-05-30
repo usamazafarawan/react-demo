@@ -14,7 +14,7 @@ export default function LandingPage() {
         <div>
           <p className="uppercase text-sm tracking-widest text-gray-300">Smarter, Faster, and More Reliable</p>
           <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-6 leading-tight">
-            Streamline procurement and enhance your supply chain with 1IGSs
+            Streamline procurement and enhance your supply chain with 1IGS
           </h1>
           <div className="flex gap-4">
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-semibold">
