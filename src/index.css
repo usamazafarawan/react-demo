@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;/* print.css */
+@media print {
+  body * {
+    visibility: hidden;
+    background-color: '#01062E';
+  }
+  #invoice-details, #invoice-details * {
+    visibility: visible;
+  }
+  #invoice-details {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    
+  }
+  @page {
+    size: A4; /* Set the paper size */
+    margin: 0; /* Remove default margins */
+  }
+}
+
+
+ body {
+    background-color: #01062E !important;
+  }
+
+.group.active{
+  background-color: rgb(255, 255, 255);
+  color: orange !important;
+}
+
+.group.active span{
+  color: #676767 !important;
+}
+.group.active svg{
+  color: #348f6c  !important;
+}
+
+

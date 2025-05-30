@@ -1,0 +1,20 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled files
+*.log
+*.gz
+*.tgz
+*.zip
+
+# Environment variables
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
