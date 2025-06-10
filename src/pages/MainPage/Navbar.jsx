@@ -460,6 +460,7 @@ const DualNavbar = () => {
                     {item.subs.map((sub, subIndex) => (
                       <ListItem
                         key={subIndex}
+              onClick={() => setBottomAnchorEl(null)}
                         sx={{
                           px: 0,
                           py: 0.5,
