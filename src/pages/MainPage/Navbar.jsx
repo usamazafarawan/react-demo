@@ -16,7 +16,10 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Collapse
+  Collapse,
+  Paper,
+  Grid,
+  Stack
 } from '@mui/material';
 import {
   ExpandMore as ExpandMoreIcon,
@@ -80,9 +83,8 @@ const TopHeaderBar = () => {
   );
 };
 
-
 const DualNavbar = () => {
-  const topLinks = ['Partner', 'Company', 'Managed Services', 'Industries', 'Careers'];
+  const topLinks = ['Partner', 'Company', 'Managed Services', 'Industries', 'Careers', 'Contact Us'];
   const bottomLinks = [
     'IIGS STRATEGY',
     'IIGS iPROCURE',
@@ -101,6 +103,218 @@ const DualNavbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
     setActiveMenu(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  const menuContents = {
+    'Managed Services': {
+      left: {
+        title: 'Procurement Outsourcing ',
+        items: [
+          'Strategic Sourcing',
+          'Tail-Spend Management',
+          'Category Management',
+          'Supply Chain Outsourcing',
+          'Supply Chain Planning & Forecasting',
+          'Inventory Management Logistics Management'
+        ]
+      },
+      right: {
+        title: 'Supply Chain Outsourcing ',
+        items: [
+          'Inventory Management',
+          'Logistics Management',
+          'Supply Risk Management',
+        ]
+      }
+    },
+    'Careers': {
+      left: {
+        title: 'Career Opportunities',
+        items: [
+          'Investing in People',
+          'Explore Career Paths',
+          'Join Us',
+        ]
+      },
+    },
+    'Company': {
+      left: {
+        title: 'About Us',
+        items: [
+          'Mission & Vision',
+          'Diversity',
+          'Culture',
+          '1IGS Cares',
+          'Cor Values'
+        ]
+      },
+    },
+    'Industries': {
+      left: {
+        title: 'By Sector',
+        items: [
+          'Banking',
+          'Healthcare',
+          'Retail',
+          'Manufacturing',
+          'Technology',
+          'Energy'
+        ]
+      },
+    },
+    'Contact Us': {
+      left: {
+        title: 'About Us',
+        items: [
+          'Ask Us',
+          'Request for Proposal',
+          'Schedule a Consultation',
+          'Share Feedback',
+        ]
+      },
+    },
+    'Partner': {
+      left: {
+        title: 'Partner With Us',
+        items: ['Become a Partner', 'Partner Portal', 'Partner Resources']
+      },
+    }
+  };
+
+  const renderMenu = (menuKey) => {
+    const menuContent = menuContents[menuKey];
+    if (!menuContent) return null;
+
+    const hasRightColumn = menuContent.right && menuContent.right.items.length > 0;
+
+    return (
+      <Menu
+        anchorEl={anchorEl}
+        open={open && activeMenu === menuKey}
+        onClose={handleClose}
+        MenuListProps={{
+          sx: {
+            display: 'flex',
+            flexDirection: 'column',
+            p: 0,
+            width: hasRightColumn ? 700 : 250  
+          }
+        }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left'
+        }}
+        PaperProps={{
+          sx: {
+            mt: 1,
+            boxShadow: 3,
+            borderRadius: 2,
+            overflow: 'hidden',
+            backgroundColor: '#fff'
+          }
+        }}
+      >
+        {/* Menu Title Bar */}
+        <Box sx={{
+          color: '#F36434',
+          p: 2,
+          textAlign: 'center'
+        }}>
+          <Typography variant="subtitle1" sx={{
+            fontWeight: 'bold',
+            fontSize: '1.1rem'
+          }}>
+            {menuKey.toUpperCase()}
+          </Typography>
+        </Box>
+
+        {/* Content Container */}
+        <Box sx={{
+          display: 'flex',
+          p: 2,
+          gap: 4
+        }}>
+          {/* Left Column - Always present */}
+          <Box sx={{ width: hasRightColumn ? '50%' : '100%' }}>
+            <Typography variant="subtitle1" sx={{
+              fontWeight: 'bold',
+              mb: 1,
+            }}>
+              {menuContent.left.title}
+            </Typography>
+            {menuContent.left.items.map((item) => (
+              <MenuItem
+                key={item}
+                onClick={handleClose}
+                sx={{
+                  p: 1,
+                  borderRadius: 1,
+                  '&:hover': {
+                    backgroundColor: 'rgba(243, 100, 52, 0.1)',
+                  }
+                }}
+              >
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{
+                    variant: 'body2',
+                    sx: {
+                      fontWeight: 500,
+                      color: '#0a0a0a'
+                    }
+                  }}
+                />
+              </MenuItem>
+            ))}
+          </Box>
+
+          {/* Right Column - Conditionally rendered */}
+          {hasRightColumn && (
+            <>
+              <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
+              <Box sx={{ width: '50%' }}>
+                <Typography variant="subtitle1" sx={{
+                  fontWeight: 'bold',
+                  mb: 1,
+                }}>
+                  {menuContent.right.title}
+                </Typography>
+                {menuContent.right.items.map((item) => (
+                  <MenuItem
+                    key={item}
+                    onClick={handleClose}
+                    sx={{
+                      p: 1,
+                      borderRadius: 1,
+                      '&:hover': {
+                        backgroundColor: 'rgba(243, 100, 52, 0.1)',
+                      }
+                    }}
+                  >
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{
+                        variant: 'body2',
+                        sx: {
+                          fontWeight: 500,
+                          color: '#0a0a0a'
+                        }
+                      }}
+                    />
+                  </MenuItem>
+                ))}
+              </Box>
+            </>
+          )}
+        </Box>
+      </Menu>
+    );
   };
 
   return (
@@ -161,22 +375,40 @@ const DualNavbar = () => {
                 THROUGH INNOVATION
               </Typography>
             </Box>
-
           </Box>
 
           {/* Right Top Menu Items + Menu Icon */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {topLinks.map(link => (
-              <Button
-                key={link}
-                sx={{ color: 'white', fontSize: '0.8rem', textTransform: 'none' }}
-                endIcon={<ArrowDropDownIcon />}
-              >
-                {link}
-              </Button>
+              <React.Fragment key={link}>
+                <Button
+                  aria-controls={open ? `${link}-menu` : undefined}
+                  aria-haspopup="true"
+                  onClick={(e) => handleClick(e, link)}
+                  sx={{
+                    color: 'white',
+                    fontSize: '0.8rem',
+                    textTransform: 'none',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    }
+                  }}
+                  endIcon={<ArrowDropDownIcon />}
+                >
+                  {link}
+                </Button>
+                {menuContents[link] && renderMenu(link)}
+              </React.Fragment>
             ))}
             {/* Rightmost Menu Icon */}
-            <IconButton color="inherit">
+            <IconButton
+              color="inherit"
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                }
+              }}
+            >
               <MenuIcon />
             </IconButton>
           </Box>
@@ -188,13 +420,20 @@ const DualNavbar = () => {
         <Toolbar sx={{ gap: 2 }}>
           {bottomLinks.map((link) => {
             const [prefix, ...rest] = link.split(' ');
-            const suffix = rest.join(' '); // handles multi-word suffixes
+            const suffix = rest.join(' ');
 
             return (
               <Button
                 key={link}
                 endIcon={<ArrowDropDownIcon sx={{ color: '#fff' }} />}
-                sx={{ textTransform: 'none', fontWeight: 'bold', fontSize: '0.8rem' }}
+                sx={{
+                  textTransform: 'none',
+                  fontWeight: 'bold',
+                  fontSize: '0.8rem',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                  }
+                }}
               >
                 <Typography component="span" sx={{ color: '#F36434', marginRight: 0.5 }}>
                   {prefix}
@@ -209,7 +448,7 @@ const DualNavbar = () => {
       </AppBar>
     </Box>
   );
-}
+};
 
 
 
