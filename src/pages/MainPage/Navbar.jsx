@@ -318,6 +318,212 @@ const DualNavbar = () => {
     );
   };
 
+
+
+
+
+
+  // for bottom
+
+  const [bottomAnchorEl, setBottomAnchorEl] = React.useState(null);
+  const [activeBottomMenu, setActiveBottomMenu] = React.useState(null);
+
+  const handleBottomClick = (event, label) => {
+    setBottomAnchorEl(event.currentTarget);
+    setActiveBottomMenu(label);
+  };
+
+  const handleBottomClose = () => {
+    setBottomAnchorEl(null);
+    setActiveBottomMenu(null);
+  };
+
+  // Add this to your component
+  const [expandedItem, setExpandedItem] = useState(null);
+
+  const handleSubItemClick = (itemIndex) => {
+    setExpandedItem(expandedItem === itemIndex ? null : itemIndex);
+  };
+
+
+  const bottomOpen = Boolean(bottomAnchorEl);
+
+  const bottomMenuContents = {
+    'IIGS STRATEGY': {
+      items: [
+        {
+          title: 'PROCUREMENT CONSULTING',
+          icon: <ArrowDropDownIcon />,
+          subs: ['Business Process Outsourcing', 'Cost of Goods Sold Transformation', 'Supply Chain Risk Management', 'Operations Management',
+            'Supplier Information Management', 'Contract Management', 'Invoice Management'
+          ]
+        },
+        {
+          title: 'PLAN',
+          icon: <ArrowDropDownIcon />,
+          subs: ['Digital Planning', 'S&OP', 'S&OE', 'Collaborative Planning']
+        },
+        {
+          title: 'SUPPLY CHAIN CONSULTING',
+          icon: <ArrowDropDownIcon />,
+          subs: ['SUSTAINABILITY AND RESILIENCE', 'Environmental, Social, and Governance', 'Sustainability Consulting Services',
+
+
+            'Socially Responsible Sourcing', 'Supply Chain Strategy', 'Supply Chain Diagnostics', 'Inventory Optimization', 'Network Optimization', '1IGS Total Inventory Management Solution'
+          ]
+        },
+        {
+          title: 'MAKE',
+          icon: <ArrowDropDownIcon />,
+          subs: ['Inventory Strategy & Management', '1IGS Total Inventory Management Solution', 'Operations & Manufacturing Excellence']
+        },
+
+        {
+          title: 'PROCURE',
+          icon: <ArrowDropDownIcon />,
+          subs: ['Source To Contract', 'Procure To Pay']
+        },
+        {
+          title: 'DELIVER',
+          icon: <ArrowDropDownIcon />,
+          subs: ['Network Strategy & Optimization', 'Warehousing & Transportation Management']
+        }
+      ]
+    },
+    // Add similar structures for other menu items
+  };
+
+  const renderBottomMenu = (menuKey) => {
+    const menuContent = bottomMenuContents[menuKey];
+    if (!menuContent) return null;
+
+    return (
+      <Menu
+        anchorEl={bottomAnchorEl}
+        open={bottomOpen && activeBottomMenu === menuKey}
+        onClose={handleBottomClose}
+        MenuListProps={{
+          sx: {
+            p: 3,
+            width: '100vw',
+            maxWidth: '100%',
+          }
+        }}
+        PaperProps={{
+          sx: {
+            mt: 0,
+            left: '0 !important',
+            right: '0 !important',
+            width: '100vw',
+            maxWidth: '100%',
+            borderRadius: 0,
+            boxShadow: 3,
+            backgroundColor: '#000',
+            borderTop: '1px solid #506BA4'
+          }
+        }}
+      >
+        <Grid container spacing={4} sx={{ maxWidth: '1500px', margin: '0 auto' }}>
+          {menuContent.items.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Box
+                onClick={() => handleSubItemClick(index)}
+                sx={{
+                  p: 2,
+                  borderRadius: 1,
+                  cursor: 'pointer',
+                  backgroundColor: expandedItem === index ? 'rgba(56, 54, 54, 0.1)' : 'transparent',
+                  '&:hover': {
+                    backgroundColor: 'rgba(56, 54, 54, 0.1)'
+                  }
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Box sx={{ mr: 2, color: '#F36434' }}>
+                    {item.icon}
+                  </Box>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontWeight: 'bold',
+                      color: '#fff',
+                      flexGrow: 1
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  {expandedItem === index ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                </Box>
+
+                <Collapse in={expandedItem === index}>
+                  <List dense sx={{ mt: 1, pl: 6 }}>
+                    {item.subs.map((sub, subIndex) => (
+                      <ListItem
+                        key={subIndex}
+                        sx={{
+                          px: 0,
+                          py: 0.5,
+                          '&:hover': {
+                            '& .MuiTypography-root': {
+                              color: '#F36434'
+                            }
+                          }
+                        }}
+                      >
+                        <ListItemText
+                          primary={sub}
+                          primaryTypographyProps={{
+                            variant: 'body2',
+                            sx: {
+                              color: '#fff',
+                              fontSize: '0.85rem'
+                            }
+                          }}
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Menu>
+    );
+  };
+
+  const renderBottomLinks = () => {
+    return bottomLinks.map((link) => {
+      const [prefix, ...rest] = link.split(' ');
+      const suffix = rest.join(' ');
+
+      return (
+        <React.Fragment key={link}>
+          <Button
+            onClick={(e) => handleBottomClick(e, link)}
+            endIcon={<ArrowDropDownIcon sx={{ color: '#fff' }} />}
+            sx={{
+              textTransform: 'none',
+              fontWeight: 'bold',
+              fontSize: '0.8rem',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.1)'
+              }
+            }}
+          >
+            <Typography component="span" sx={{ color: '#F36434', marginRight: 0.5 }}>
+              {prefix}
+            </Typography>
+            <Typography component="span" sx={{ color: '#506BA4' }}>
+              {suffix}
+            </Typography>
+          </Button>
+          {renderBottomMenu(link)}
+        </React.Fragment>
+      );
+    });
+  };
+
   return (
     <Box>
       {/* Top Section */}
@@ -419,32 +625,7 @@ const DualNavbar = () => {
       {/* Bottom Section */}
       <AppBar position="static" sx={{ backgroundColor: '#0a0a0a', paddingX: 2, boxShadow: 'none' }}>
         <Toolbar sx={{ gap: 2 }}>
-          {bottomLinks.map((link) => {
-            const [prefix, ...rest] = link.split(' ');
-            const suffix = rest.join(' ');
-
-            return (
-              <Button
-                key={link}
-                endIcon={<ArrowDropDownIcon sx={{ color: '#fff' }} />}
-                sx={{
-                  textTransform: 'none',
-                  fontWeight: 'bold',
-                  fontSize: '0.8rem',
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                  }
-                }}
-              >
-                <Typography component="span" sx={{ color: '#F36434', marginRight: 0.5 }}>
-                  {prefix}
-                </Typography>
-                <Typography component="span" sx={{ color: '#506BA4' }}>
-                  {suffix}
-                </Typography>
-              </Button>
-            );
-          })}
+          {renderBottomLinks()}
         </Toolbar>
       </AppBar>
     </Box>
