@@ -121,7 +121,7 @@ const DualNavbar = () => {
         ]
       },
       right: {
-        title: 'Supply Chain Outsourcing ',
+        title: 'Supply Chain Outsourcing',
         items: [
           'Inventory Management',
           'Logistics Management',
@@ -131,7 +131,6 @@ const DualNavbar = () => {
     },
     'Careers': {
       left: {
-        title: 'Career Opportunities',
         items: [
           'Investing in People',
           'Explore Career Paths',
@@ -141,7 +140,6 @@ const DualNavbar = () => {
     },
     'Company': {
       left: {
-        title: 'About Us',
         items: [
           'Mission & Vision',
           'Diversity',
@@ -153,7 +151,6 @@ const DualNavbar = () => {
     },
     'Industries': {
       left: {
-        title: 'By Sector',
         items: [
           'Banking',
           'Healthcare',
@@ -166,7 +163,6 @@ const DualNavbar = () => {
     },
     'Contact Us': {
       left: {
-        title: 'About Us',
         items: [
           'Ask Us',
           'Request for Proposal',
@@ -177,7 +173,6 @@ const DualNavbar = () => {
     },
     'Partner': {
       left: {
-        title: 'Partner With Us',
         items: ['Become a Partner', 'Partner Portal', 'Partner Resources']
       },
     }
@@ -199,7 +194,7 @@ const DualNavbar = () => {
             display: 'flex',
             flexDirection: 'column',
             p: 0,
-            width: hasRightColumn ? 700 : 250  
+            width: hasRightColumn ? 700 : 250
           }
         }}
         anchorOrigin={{
@@ -216,23 +211,10 @@ const DualNavbar = () => {
             boxShadow: 3,
             borderRadius: 2,
             overflow: 'hidden',
-            backgroundColor: '#fff'
+            backgroundColor: '#040a15'
           }
         }}
       >
-        {/* Menu Title Bar */}
-        <Box sx={{
-          color: '#F36434',
-          p: 2,
-          textAlign: 'center'
-        }}>
-          <Typography variant="subtitle1" sx={{
-            fontWeight: 'bold',
-            fontSize: '1.1rem'
-          }}>
-            {menuKey.toUpperCase()}
-          </Typography>
-        </Box>
 
         {/* Content Container */}
         <Box sx={{
@@ -242,12 +224,17 @@ const DualNavbar = () => {
         }}>
           {/* Left Column - Always present */}
           <Box sx={{ width: hasRightColumn ? '50%' : '100%' }}>
-            <Typography variant="subtitle1" sx={{
-              fontWeight: 'bold',
-              mb: 1,
-            }}>
-              {menuContent.left.title}
-            </Typography>
+            {menuContent.left.title && (
+              <>
+                <Typography variant="subtitle1" sx={{
+                  fontWeight: 'bold',
+                  mb: 1,
+                  color: '#fff'
+                }}>
+                  {menuContent.left.title}
+                </Typography>
+              </>
+            )}
             {menuContent.left.items.map((item) => (
               <MenuItem
                 key={item}
@@ -256,7 +243,7 @@ const DualNavbar = () => {
                   p: 1,
                   borderRadius: 1,
                   '&:hover': {
-                    backgroundColor: 'rgba(243, 100, 52, 0.1)',
+                    backgroundColor: 'rgba(193, 172, 165, 0.1)',
                   }
                 }}
               >
@@ -266,7 +253,7 @@ const DualNavbar = () => {
                     variant: 'body2',
                     sx: {
                       fontWeight: 500,
-                      color: '#0a0a0a'
+                      color: '#fff'
                     }
                   }}
                 />
@@ -277,14 +264,28 @@ const DualNavbar = () => {
           {/* Right Column - Conditionally rendered */}
           {hasRightColumn && (
             <>
-              <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
-              <Box sx={{ width: '50%' }}>
-                <Typography variant="subtitle1" sx={{
-                  fontWeight: 'bold',
-                  mb: 1,
-                }}>
-                  {menuContent.right.title}
-                </Typography>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{
+                  mx: 2,
+                  borderColor: '#506BA4',
+                }}
+              />              <Box sx={{ width: '50%' }}>
+
+                {menuContent.right.title && (
+
+                  <>
+                    <Typography variant="subtitle1" sx={{
+                      fontWeight: 'bold',
+                      mb: 1,
+                      color: '#fff'
+                    }}>
+                      {menuContent.right.title}
+                    </Typography>
+                  </>
+                )}
+
                 {menuContent.right.items.map((item) => (
                   <MenuItem
                     key={item}
@@ -293,7 +294,7 @@ const DualNavbar = () => {
                       p: 1,
                       borderRadius: 1,
                       '&:hover': {
-                        backgroundColor: 'rgba(243, 100, 52, 0.1)',
+                        backgroundColor: 'rgba(193, 172, 165, 0.1)',
                       }
                     }}
                   >
@@ -303,7 +304,7 @@ const DualNavbar = () => {
                         variant: 'body2',
                         sx: {
                           fontWeight: 500,
-                          color: '#0a0a0a'
+                          color: '#fff'
                         }
                       }}
                     />
