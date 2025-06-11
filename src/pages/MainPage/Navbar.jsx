@@ -454,179 +454,243 @@ const DualNavbar = () => {
     // Check if the menu has left/right structure (IIGS MANAGED SERVICES)
     if (menuContent.left && menuContent.right) {
       return (
-        <Menu
-          anchorEl={bottomAnchorEl}
-          open={bottomOpen && activeBottomMenu === menuKey}
-          onClose={handleBottomClose}
-          MenuListProps={{
-            sx: {
-              p: 3,
-              width: '100vw',
-              maxWidth: '100%',
-            }
-          }}
-          PaperProps={{
-            sx: {
-              mt: 0,
-              left: '0 !important',
-              right: '0 !important',
-              width: '100vw',
-              maxWidth: '100%',
-              borderRadius: 0,
-              boxShadow: 3,
-              backgroundColor: '#000',
-              borderTop: '1px solid #506BA4'
-            }
-          }}
-        >
-          <Grid container spacing={4} sx={{ maxWidth: '1500px', margin: '0 auto' }}>
-            {/* Left Section */}
-            <Grid item xs={12} md={6}>
-              <Typography variant="subtitle1" sx={{
-                fontWeight: 'bold',
-                color: '#F36434',
-                mb: 2,
-                fontSize: '1.1rem'
-              }}>
-                {menuContent.left.title}
-              </Typography>
-              <List dense>
-                {menuContent.left.items.map((item, index) => (
-                  <ListItem
-                    key={`left-${index}`}
-                    onClick={() => setBottomAnchorEl(null)}
-                    sx={{
-                      px: 0,
-                      py: 0.5,
-                      '&:hover': {
-                        '& .MuiTypography-root': {
-                          color: '#F36434'
-                        }
-                      }
-                    }}
-                  >
-                    <ListItemText
-                      primary={item}
-                      primaryTypographyProps={{
-                        variant: 'body2',
-                        sx: {
-                          color: '#fff',
-                          fontSize: '0.85rem'
-                        }
-                      }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Grid>
+       <Menu
+  anchorEl={bottomAnchorEl}
+  open={bottomOpen && activeBottomMenu === menuKey}
+  onClose={handleBottomClose}
+  MenuListProps={{
+    sx: {
+      p: 3,
+      width: '100vw',
+      maxWidth: '100%',
+    },
+  }}
+  PaperProps={{
+    sx: {
+      mt: 0,
+      left: '0 !important',
+      right: '0 !important',
+      width: '100vw',
+      maxWidth: '100%',
+      borderRadius: 0,
+      boxShadow: 3,
+      backgroundColor: '#000',
+      borderTop: '1px solid #506BA4',
+    },
+  }}
+>
+  <Box sx={{ display: 'flex', maxWidth: '1500px', mx: 'auto', gap: 3 }}>
+    {/* Left Section */}
+    <Box sx={{ width: '50%' }}>
+      <Typography
+        variant="subtitle1"
+        sx={{
+          fontWeight: 'bold',
+          color: '#F36434',
+          mb: 2,
+          fontSize: '1.1rem',
+        }}
+      >
+        {menuContent.left.title}
+      </Typography>
+      <List dense>
+        {menuContent.left.items.map((item, index) => (
+          <ListItem
+            key={`left-${index}`}
+            onClick={() => setBottomAnchorEl(null)}
+            sx={{
+              px: 0,
+              py: 0.5,
+              '&:hover': {
+                '& .MuiTypography-root': {
+                  color: '#F36434',
+                },
+              },
+            }}
+          >
+            <ListItemText
+              primary={item}
+              primaryTypographyProps={{
+                variant: 'body2',
+                sx: {
+                  color: '#fff',
+                  fontSize: '0.85rem',
+                },
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
 
-            {/* Right Section */}
-            <Grid item xs={12} md={6}>
-              <Typography variant="subtitle1" sx={{
-                fontWeight: 'bold',
-                color: '#F36434',
-                mb: 2,
-                fontSize: '1.1rem'
-              }}>
-                {menuContent.right.title}
-              </Typography>
-              <List dense>
-                {menuContent.right.items.map((item, index) => (
-                  <ListItem
-                    key={`right-${index}`}
-                    onClick={() => setBottomAnchorEl(null)}
-                    sx={{
-                      px: 0,
-                      py: 0.5,
-                      '&:hover': {
-                        '& .MuiTypography-root': {
-                          color: '#F36434'
-                        }
-                      }
-                    }}
-                  >
-                    <ListItemText
-                      primary={item}
-                      primaryTypographyProps={{
-                        variant: 'body2',
-                        sx: {
-                          color: '#fff',
-                          fontSize: '0.85rem'
-                        }
-                      }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Grid>
-          </Grid>
-        </Menu>
+    {/* Vertical Divider */}
+    <Divider
+      orientation="vertical"
+      flexItem
+      sx={{
+        mx: 2,
+        borderColor: '#506BA4',
+      }}
+    />
+
+    {/* Right Section */}
+    <Box sx={{ width: '50%' }}>
+      <Typography
+        variant="subtitle1"
+        sx={{
+          fontWeight: 'bold',
+          color: '#F36434',
+          mb: 2,
+          fontSize: '1.1rem',
+        }}
+      >
+        {menuContent.right.title}
+      </Typography>
+      <List dense>
+        {menuContent.right.items.map((item, index) => (
+          <ListItem
+            key={`right-${index}`}
+            onClick={() => setBottomAnchorEl(null)}
+            sx={{
+              px: 0,
+              py: 0.5,
+              '&:hover': {
+                '& .MuiTypography-root': {
+                  color: '#F36434',
+                },
+              },
+            }}
+          >
+            <ListItemText
+              primary={item}
+              primaryTypographyProps={{
+                variant: 'body2',
+                sx: {
+                  color: '#fff',
+                  fontSize: '0.85rem',
+                },
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  </Box>
+</Menu>
+
       );
     }
 
     // Check if items is an array of strings (simple list)
-    if (Array.isArray(menuContent.items) && menuContent.items.every(item => typeof item === 'string')) {
-      return (
-        <Menu
-          anchorEl={bottomAnchorEl}
-          open={bottomOpen && activeBottomMenu === menuKey}
-          onClose={handleBottomClose}
-          MenuListProps={{
-            sx: {
-              p: 3,
-              width: '100vw',
-              maxWidth: '100%',
-            }
-          }}
-          PaperProps={{
-            sx: {
-              mt: 0,
-              left: '0 !important',
-              right: '0 !important',
-              width: '100vw',
-              maxWidth: '100%',
-              borderRadius: 0,
-              boxShadow: 3,
-              backgroundColor: '#000',
-              borderTop: '1px solid #506BA4'
-            }
-          }}
-        >
-          <Grid container spacing={4} sx={{ maxWidth: '1500px', margin: '0 auto' }}>
-            <Grid item xs={12}>
-              <List dense sx={{ columns: { xs: 1, sm: 2, md: 3, lg: 4 }, columnGap: 4 }}>
-                {menuContent.items.map((item, index) => (
-                  <ListItem
-                    key={index}
-                    onClick={() => setBottomAnchorEl(null)}
-                    sx={{
-                      px: 0,
-                      py: 0.5,
-                      '&:hover': {
-                        '& .MuiTypography-root': {
-                          color: '#F36434'
-                        }
-                      }
-                    }}
-                  >
-                    <ListItemText
-                      primary={item}
-                      primaryTypographyProps={{
-                        variant: 'body2',
-                        sx: {
-                          color: '#fff',
-                          fontSize: '0.85rem'
-                        }
-                      }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Grid>
-          </Grid>
-        </Menu>
-      );
-    }
+if (Array.isArray(menuContent.items) && menuContent.items.every(item => typeof item === 'string')) {
+  return (
+ <Menu
+  anchorEl={bottomAnchorEl}
+  open={bottomOpen && activeBottomMenu === menuKey}
+  onClose={handleBottomClose}
+  MenuListProps={{
+    sx: {
+      p: 3,
+      width: '100vw',
+      maxWidth: '100%',
+    },
+  }}
+  PaperProps={{
+    sx: {
+      mt: 0,
+      left: '0 !important',
+      right: '0 !important',
+      width: '100vw',
+      maxWidth: '100%',
+      borderRadius: 0,
+      boxShadow: 3,
+      backgroundColor: '#000',
+    },
+  }}
+>
+  <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      maxWidth: '1500px',
+      mx: 'auto',
+      px: 3,
+    }}
+  >
+    {/* Left Column */}
+    <Box sx={{ width: '50%' }}>
+      <List dense>
+        {menuContent.items.slice(0, Math.ceil(menuContent.items.length / 2)).map((item, index) => (
+          <ListItem
+            key={index}
+            onClick={() => setBottomAnchorEl(null)}
+            sx={{
+              px: 0,
+              py: 0.5,
+              '&:hover .MuiTypography-root': {
+                color: '#F36434',
+              },
+            }}
+          >
+            <ListItemText
+              primary={item}
+              primaryTypographyProps={{
+                variant: 'body2',
+                sx: {
+                  color: '#fff',
+                  fontSize: '0.85rem',
+                },
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+
+    {/* Custom Vertical Divider */}
+    <Divider
+      orientation="vertical"
+      flexItem
+      sx={{
+        mx: 2,
+        borderColor: '#506BA4',
+      }}
+    />
+
+    {/* Right Column */}
+    <Box sx={{ width: '50%' }}>
+      <List dense>
+        {menuContent.items.slice(Math.ceil(menuContent.items.length / 2)).map((item, index) => (
+          <ListItem
+            key={index}
+            onClick={() => setBottomAnchorEl(null)}
+            sx={{
+              px: 0,
+              py: 0.5,
+              '&:hover .MuiTypography-root': {
+                color: '#F36434',
+              },
+            }}
+          >
+            <ListItemText
+              primary={item}
+              primaryTypographyProps={{
+                variant: 'body2',
+                sx: {
+                  color: '#fff',
+                  fontSize: '0.85rem',
+                },
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  </Box>
+</Menu>
+  );
+}
 
     // Default case (nested items with expandable sections)
     return (

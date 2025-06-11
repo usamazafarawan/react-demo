@@ -15,74 +15,81 @@ export default function LandingPage() {
   return (
     <div>
 
-<div className="relative min-h-screen bg-cover bg-center flex flex-col" style={{ backgroundImage: `url(${backgroundImage})` }}>
-  {/* Overlay for dimming */}
-  <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+<div
+  className="relative min-h-screen bg-cover bg-center flex flex-col"
+  style={{ backgroundImage: `url(${backgroundImage})` }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
 
-  {/* Main Content Container */}
-  <div className="relative z-10 px-6 py-16 text-white max-w-7xl mx-auto flex-grow flex flex-col">
-    {/* Top Section - takes available space */}
-    <div className="grid md:grid-cols-2 gap-8 items-center flex-grow">
-      {/* Text Section */}
-      <div>
-        <p className="uppercase text-sm tracking-widest text-gray-300">
-          Smarter, Faster, and More Reliable
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-6 leading-tight">
-          Streamline procurement and enhance your supply chain with 1IGS
-        </h1>
-        <div className="flex gap-4 flex-wrap">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-semibold">
-            Explore Cost-Effective Sourcing Options
-          </button>
-          <button className="border border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded font-semibold transition-colors">
-            Book a Meeting
-          </button>
+  {/* Main Content Area */}
+  <div className="relative z-10 flex-grow flex flex-col w-full">
+    {/* Bootstrap-style container wrapper */}
+    <div className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-grow flex flex-col py-16 text-white">
+
+      {/* Top Section */}
+      <div className="grid md:grid-cols-2 gap-8 items-center flex-grow">
+        <div>
+          <p className="uppercase text-sm tracking-widest text-gray-300">
+            Smarter, Faster, and More Reliable
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-6 leading-tight">
+            Streamline procurement and enhance your supply chain with 1IGS
+          </h1>
+          <div className="flex gap-4 flex-wrap">
+            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-semibold">
+              Explore Cost-Effective Sourcing Options
+            </button>
+            <button className="border border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded font-semibold transition-colors">
+              Book a Meeting
+            </button>
+          </div>
+        </div>
+
+        {/* Earth Image */}
+        <div className="flex justify-center">
+          <img
+            src={earth}
+            alt="Earth held by robotic arms"
+            className="w-full max-w-lg"
+          />
         </div>
       </div>
 
-      {/* Earth Image */}
-      <div className="flex justify-center">
-        <img
-          src={earth}
-          alt="Earth held by robotic arms"
-          className="w-full max-w-lg"
-        />
+      {/* Bottom Cards */}
+      <div className="mt-auto pt-20 pb-1">
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              title: "Accelerate long-term growth with 1IGS's",
+              text: "We design strategies to cut costs, boost efficiency, and manage risks, offering solutions from logistics to procurement for sustainable success.",
+              link: "Let's Co-Create →",
+            },
+            {
+              title: "Proactive, innovative, and results-focused",
+              text: "We build impactful partnerships with global leaders. By teaming up, we fast-track success, spark innovation, and revolutionize global sourcing strategies.",
+              link: "Call to explore global sourcing options →",
+            },
+            {
+              title: "Driving success through strategic partnerships",
+              text: "We collaborate to accelerate innovation, drive results, and transform your business globally by aligning expertise to meet your unique sourcing needs.",
+              link: "Partner for Success →",
+            },
+          ].map((card, idx) => (
+            <div
+              key={idx}
+              className="bg-black/30 backdrop-blur-md p-6 rounded-lg hover:bg-black/40 transition-colors"
+            >
+              <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+              <p className="text-sm mb-4">{card.text}</p>
+              <a href="#" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">
+                {card.link}
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
 
-    {/* Bottom Section - positioned at bottom of content area */}
-    <div className="mt-auto pt-16 pb-8 w-full">
-      <div className="grid md:grid-cols-3 gap-6">
-        {[
-          {
-            title: "Accelerate long-term growth with 1IGS's",
-            text: "We design strategies to cut costs, boost efficiency, and manage risks, offering solutions from logistics to procurement for sustainable success.",
-            link: "Let's Co-Create →",
-          },
-          {
-            title: "Proactive, innovative, and results-focused",
-            text: "We build impactful partnerships with global leaders. By teaming up, we fast-track success, spark innovation, and revolutionize global sourcing strategies.",
-            link: "Call to explore global sourcing options →",
-          },
-          {
-            title: "Driving success through strategic partnerships",
-            text: "We collaborate to accelerate innovation, drive results, and transform your business globally by aligning expertise to meet your unique sourcing needs.",
-            link: "Partner for Success →",
-          },
-        ].map((card, idx) => (
-          <div
-            key={idx}
-            className="bg-black/30 backdrop-blur-md p-6 rounded-lg hover:bg-black/40 transition-colors"
-          >
-            <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-            <p className="text-sm mb-4">{card.text}</p>
-            <a href="#" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">
-              {card.link}
-            </a>
-          </div>
-        ))}
-      </div>
     </div>
   </div>
 </div>
