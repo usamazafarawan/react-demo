@@ -349,7 +349,7 @@ const DualNavbar = () => {
   const bottomOpen = Boolean(bottomAnchorEl);
 
   const bottomMenuContents = {
-    'IIGS STRATEGY': {
+    '1IGS STRATEGY': {
       items: [
         {
           title: 'PROCUREMENT CONSULTING',
@@ -391,7 +391,7 @@ const DualNavbar = () => {
       ]
     },
 
-    'IIGS iPROCURE': {
+    '1IGS iPROCURE': {
       items: [
         'Direct Procurement',
         'Indirect Procurement',
@@ -413,7 +413,7 @@ const DualNavbar = () => {
       ]
     },
 
-    'IIGS iSUPPLY': {
+    '1IGS iSUPPLY': {
       items: [
         'Supply Chain Visibility and Execution',
         'Supply Chain Planning',
@@ -423,7 +423,7 @@ const DualNavbar = () => {
         'Inventory and Warehouse Management',
       ]
     },
-    'IIGS MANAGED SERVICES': {
+    '1IGS MANAGED SERVICES': {
       left: {
         title: 'Procurement Outsourcing ',
         items: [
