@@ -60,23 +60,23 @@ const TopHeaderBar = () => {
       {/* Left Icons */}
       <Box sx={{ display: 'flex', gap: 1 }}>
         <IconButton size="small" sx={{ color: 'white' }}>
-          <SearchIcon sx={{ fontSize: 16 }} />
+          <SearchIcon  />
         </IconButton>
         <IconButton size="small" sx={{ color: 'white' }}>
-          <PhoneIcon sx={{ fontSize: 16 }} />
+          <PhoneIcon  />
         </IconButton>
         <IconButton size="small" sx={{ color: 'white' }}>
-          <LanguageIcon sx={{ fontSize: 16 }} />
+          <LanguageIcon  />
         </IconButton>
       </Box>
 
       {/* Right Icons */}
       <Box sx={{ display: 'flex', gap: 1 }}>
         <IconButton size="small" sx={{ color: '#F36434' }}>
-          <ChatBubbleOutlineIcon sx={{ fontSize: 16 }} />
+          <ChatBubbleOutlineIcon  />
         </IconButton>
         <IconButton size="small" sx={{ color: '#F36434' }}>
-          <AccountCircleIcon sx={{ fontSize: 16 }} />
+          <AccountCircleIcon  />
         </IconButton>
       </Box>
     </Box>
@@ -390,6 +390,60 @@ const DualNavbar = () => {
         }
       ]
     },
+
+    'IIGS iPROCURE': {
+      items: [
+        'Direct Procurement',
+        'Indirect Procurement',
+        'Sourcing Support Services',
+        'Unified Source-to-Pay',
+        'Source-To-Contract',
+        'Procure-to-Pay',
+        'Midsize & High Growth Enterprises',
+        'Category Management',
+        'Contract Lifecycle Management',
+        'Supplier Lifecycle Management',
+        'Third-Party Risk Management',
+        'Third-Party Risk Management',
+        'Solutions Intake Management & Orchestration',
+        'Intelligent Category Management',
+        'Tail Spend Management',
+        'Expert on Demand'
+
+      ]
+    },
+
+    'IIGS iSUPPLY': {
+      items: [
+        'Supply Chain Visibility and Execution',
+        'Supply Chain Planning',
+        'Supply Chain Collaboration',
+        'Supply Chain Network Optimization',
+        'Should Cost Modeling',
+        'Inventory and Warehouse Management',
+      ]
+    },
+    'IIGS MANAGED SERVICES': {
+      left: {
+        title: 'Procurement Outsourcing ',
+        items: [
+          'Strategic Sourcing',
+          'Tail-Spend Management',
+          'Category Management',
+          'Supply Chain Outsourcing',
+          'Supply Chain Planning & Forecasting',
+          'Inventory Management Logistics Management'
+        ]
+      },
+      right: {
+        title: 'Supply Chain Outsourcing',
+        items: [
+          'Inventory Management',
+          'Logistics Management',
+          'Supply Risk Management',
+        ]
+      }
+    },
     // Add similar structures for other menu items
   };
 
@@ -397,6 +451,184 @@ const DualNavbar = () => {
     const menuContent = bottomMenuContents[menuKey];
     if (!menuContent) return null;
 
+    // Check if the menu has left/right structure (IIGS MANAGED SERVICES)
+    if (menuContent.left && menuContent.right) {
+      return (
+        <Menu
+          anchorEl={bottomAnchorEl}
+          open={bottomOpen && activeBottomMenu === menuKey}
+          onClose={handleBottomClose}
+          MenuListProps={{
+            sx: {
+              p: 3,
+              width: '100vw',
+              maxWidth: '100%',
+            }
+          }}
+          PaperProps={{
+            sx: {
+              mt: 0,
+              left: '0 !important',
+              right: '0 !important',
+              width: '100vw',
+              maxWidth: '100%',
+              borderRadius: 0,
+              boxShadow: 3,
+              backgroundColor: '#000',
+              borderTop: '1px solid #506BA4'
+            }
+          }}
+        >
+          <Grid container spacing={4} sx={{ maxWidth: '1500px', margin: '0 auto' }}>
+            {/* Left Section */}
+            <Grid item xs={12} md={6}>
+              <Typography variant="subtitle1" sx={{
+                fontWeight: 'bold',
+                color: '#F36434',
+                mb: 2,
+                fontSize: '1.1rem'
+              }}>
+                {menuContent.left.title}
+              </Typography>
+              <List dense>
+                {menuContent.left.items.map((item, index) => (
+                  <ListItem
+                    key={`left-${index}`}
+                    onClick={() => setBottomAnchorEl(null)}
+                    sx={{
+                      px: 0,
+                      py: 0.5,
+                      '&:hover': {
+                        '& .MuiTypography-root': {
+                          color: '#F36434'
+                        }
+                      }
+                    }}
+                  >
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{
+                        variant: 'body2',
+                        sx: {
+                          color: '#fff',
+                          fontSize: '0.85rem'
+                        }
+                      }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+
+            {/* Right Section */}
+            <Grid item xs={12} md={6}>
+              <Typography variant="subtitle1" sx={{
+                fontWeight: 'bold',
+                color: '#F36434',
+                mb: 2,
+                fontSize: '1.1rem'
+              }}>
+                {menuContent.right.title}
+              </Typography>
+              <List dense>
+                {menuContent.right.items.map((item, index) => (
+                  <ListItem
+                    key={`right-${index}`}
+                    onClick={() => setBottomAnchorEl(null)}
+                    sx={{
+                      px: 0,
+                      py: 0.5,
+                      '&:hover': {
+                        '& .MuiTypography-root': {
+                          color: '#F36434'
+                        }
+                      }
+                    }}
+                  >
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{
+                        variant: 'body2',
+                        sx: {
+                          color: '#fff',
+                          fontSize: '0.85rem'
+                        }
+                      }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+          </Grid>
+        </Menu>
+      );
+    }
+
+    // Check if items is an array of strings (simple list)
+    if (Array.isArray(menuContent.items) && menuContent.items.every(item => typeof item === 'string')) {
+      return (
+        <Menu
+          anchorEl={bottomAnchorEl}
+          open={bottomOpen && activeBottomMenu === menuKey}
+          onClose={handleBottomClose}
+          MenuListProps={{
+            sx: {
+              p: 3,
+              width: '100vw',
+              maxWidth: '100%',
+            }
+          }}
+          PaperProps={{
+            sx: {
+              mt: 0,
+              left: '0 !important',
+              right: '0 !important',
+              width: '100vw',
+              maxWidth: '100%',
+              borderRadius: 0,
+              boxShadow: 3,
+              backgroundColor: '#000',
+              borderTop: '1px solid #506BA4'
+            }
+          }}
+        >
+          <Grid container spacing={4} sx={{ maxWidth: '1500px', margin: '0 auto' }}>
+            <Grid item xs={12}>
+              <List dense sx={{ columns: { xs: 1, sm: 2, md: 3, lg: 4 }, columnGap: 4 }}>
+                {menuContent.items.map((item, index) => (
+                  <ListItem
+                    key={index}
+                    onClick={() => setBottomAnchorEl(null)}
+                    sx={{
+                      px: 0,
+                      py: 0.5,
+                      '&:hover': {
+                        '& .MuiTypography-root': {
+                          color: '#F36434'
+                        }
+                      }
+                    }}
+                  >
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{
+                        variant: 'body2',
+                        sx: {
+                          color: '#fff',
+                          fontSize: '0.85rem'
+                        }
+                      }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+          </Grid>
+        </Menu>
+      );
+    }
+
+    // Default case (nested items with expandable sections)
     return (
       <Menu
         anchorEl={bottomAnchorEl}
@@ -460,7 +692,7 @@ const DualNavbar = () => {
                     {item.subs.map((sub, subIndex) => (
                       <ListItem
                         key={subIndex}
-              onClick={() => setBottomAnchorEl(null)}
+                        onClick={() => setBottomAnchorEl(null)}
                         sx={{
                           px: 0,
                           py: 0.5,
