@@ -39,10 +39,10 @@ import LanguageIcon from '@mui/icons-material/Language';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 const menuItems = [
-  'IIGS STRATEGY',
-  'IIGS iPROCURE',
-  'IIGS iSUPPLY',
-  'IIGS MANAGED SERVICES',
+  '1IGS STRATEGY',
+  '1IGS iPROCURE',
+  '1IGS iSUPPLY',
+  '1IGS MANAGED SERVICES',
 ];
 
 const TopHeaderBar = () => {
@@ -53,30 +53,30 @@ const TopHeaderBar = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        px: 2,
+        px: 6,
         py: 1,
       }}
     >
       {/* Left Icons */}
       <Box sx={{ display: 'flex', gap: 1 }}>
         <IconButton size="small" sx={{ color: 'white' }}>
-          <SearchIcon  />
+          <SearchIcon />
         </IconButton>
         <IconButton size="small" sx={{ color: 'white' }}>
-          <PhoneIcon  />
+          <PhoneIcon />
         </IconButton>
         <IconButton size="small" sx={{ color: 'white' }}>
-          <LanguageIcon  />
+          <LanguageIcon />
         </IconButton>
       </Box>
 
       {/* Right Icons */}
       <Box sx={{ display: 'flex', gap: 1 }}>
         <IconButton size="small" sx={{ color: '#F36434' }}>
-          <ChatBubbleOutlineIcon  />
+          <ChatBubbleOutlineIcon />
         </IconButton>
         <IconButton size="small" sx={{ color: '#F36434' }}>
-          <AccountCircleIcon  />
+          <AccountCircleIcon />
         </IconButton>
       </Box>
     </Box>
@@ -86,10 +86,10 @@ const TopHeaderBar = () => {
 const DualNavbar = () => {
   const topLinks = ['Partner', 'Company', 'Managed Services', 'Industries', 'Careers', 'Contact Us'];
   const bottomLinks = [
-    'IIGS STRATEGY',
-    'IIGS iPROCURE',
-    'IIGS iSUPPLY',
-    'IIGS MANAGED SERVICES',
+    '1IGS STRATEGY',
+    '1IGS iPROCURE',
+    '1IGS iSUPPLY',
+    '1IGS MANAGED SERVICES',
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -760,7 +760,7 @@ const DualNavbar = () => {
   return (
     <Box>
       {/* Top Section */}
-      <AppBar position="static" sx={{ backgroundColor: '#000', paddingX: 2, marginTop: 0.5 }}>
+      <AppBar position="static" sx={{ backgroundColor: '#000', paddingX: 4, marginTop: 0.5 }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           {/* Left Logo and Text */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -856,7 +856,7 @@ const DualNavbar = () => {
       </AppBar>
 
       {/* Bottom Section */}
-      <AppBar position="static" sx={{ backgroundColor: '#0a0a0a', paddingX: 2, boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#0a0a0a', paddingX: 4, boxShadow: 'none' }}>
         <Toolbar sx={{ gap: 2 }}>
           {renderBottomLinks()}
         </Toolbar>
