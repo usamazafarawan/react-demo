@@ -9,7 +9,7 @@ import {
   MenuItem,
   Typography,
   Divider,
-  IconButton, 
+  IconButton,
   useMediaQuery,
   useTheme,
   Drawer,
@@ -94,8 +94,8 @@ const DualNavbar = () => {
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
- const [activeMenu, setActiveMenu] = useState(null);
-   const hoverTimeoutRef = React.useRef(null);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const hoverTimeoutRef = React.useRef(null);
 
   const handleMenuOpen = (event, label) => {
     // Clear any pending timeouts
@@ -107,7 +107,7 @@ const DualNavbar = () => {
     setActiveMenu(label);
   };
 
- 
+
 
   const handleMenuClose = () => {
     // Only set timeout if there's an open menu
@@ -119,7 +119,7 @@ const DualNavbar = () => {
     }
   };
 
-   
+
 
   const cancelMenuClose = () => {
     if (hoverTimeoutRef.current) {
@@ -201,89 +201,36 @@ const DualNavbar = () => {
     }
   };
 
-const renderMenu = (label) => {
-  const content = menuContents[label];
-  if (!content) return null;
+  const renderMenu = (label) => {
+    const content = menuContents[label];
+    if (!content) return null;
 
-  const isTwoColumn = content.right && content.right.items?.length > 0;
+    const isTwoColumn = content.right && content.right.items?.length > 0;
 
-  return (
-    <Box
-      onMouseOver={() => setActiveMenu(label)}
-      onMouseLeave={() => setActiveMenu(null)}
-      sx={{
-        position: 'absolute',
-        top: '100%', // align just below the nav link
-        right: 0, // align with right of the link (assuming you're right-aligning links)
-        backgroundColor: '#000',
-        boxShadow: 3,
-        width: isTwoColumn ? 600 : 200,
-        maxWidth: '90vw',
-        zIndex: 1200,
-        display: 'flex',
-        p: 1,
-        borderRadius: '0 0 8px 8px',
-        border: '1px solid rgba(45, 83, 164, 0.3)',
-        mt: 0, // ensure no spacing
-      }}
-    >
-      <Grid container spacing={2} alignItems="flex-start" >
-        {/* Left Column */}
-        <Grid item xs={isTwoColumn ? 6 : 12}>
-          {content.left?.title && (
-            <Typography
-              variant="h6"
-              sx={{
-                pb: 1,
-                mb: 2,
-                fontSize: '1rem',
-                fontWeight: 600,
-              }}
-            >
-              {content.left.title}
-            </Typography>
-          )}
-          {content.left.items.map((item, i) => (
-            <Box
-              key={i}
-              sx={{
-                my: 1,
-                '&:hover': {
-                  backgroundColor: 'rgba(221, 207, 202, 0.1)',
-                  borderRadius: 1,
-                },
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{
-                  color: '#fff',
-                  px: 1,
-                  py: 0.5,
-                  '&:hover': {
-                    cursor: 'pointer',
-                  },
-                }}
-              >
-                {item}
-              </Typography>
-            </Box>
-          ))}
-        </Grid>
-
-        {/* Divider for 2-column layout */}
-        {isTwoColumn && (
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ borderColor: '#2D53A4', mx: 1 }}
-          />
-        )}
-
-        {/* Right Column */}
-        {isTwoColumn && (
-          <Grid item xs={5}>
-            {content.right?.title && (
+    return (
+      <Box
+        onMouseOver={() => setActiveMenu(label)}
+        onMouseLeave={() => setActiveMenu(null)}
+        sx={{
+          position: 'absolute',
+          top: '100%', // align just below the nav link
+          right: 0, // align with right of the link (assuming you're right-aligning links)
+          backgroundColor: '#000',
+          boxShadow: 3,
+          width: isTwoColumn ? 600 : 200,
+          maxWidth: '90vw',
+          zIndex: 1200,
+          display: 'flex',
+          p: 1,
+          borderRadius: '0 0 8px 8px',
+          border: '1px solid rgba(45, 83, 164, 0.3)',
+          mt: 0, // ensure no spacing
+        }}
+      >
+        <Grid container spacing={2} alignItems="flex-start" >
+          {/* Left Column */}
+          <Grid item xs={isTwoColumn ? 6 : 12}>
+            {content.left?.title && (
               <Typography
                 variant="h6"
                 sx={{
@@ -293,10 +240,10 @@ const renderMenu = (label) => {
                   fontWeight: 600,
                 }}
               >
-                {content.right.title}
+                {content.left.title}
               </Typography>
             )}
-            {content.right.items.map((item, i) => (
+            {content.left.items.map((item, i) => (
               <Box
                 key={i}
                 sx={{
@@ -323,11 +270,64 @@ const renderMenu = (label) => {
               </Box>
             ))}
           </Grid>
-        )}
-      </Grid>
-    </Box>
-  );
-};
+
+          {/* Divider for 2-column layout */}
+          {isTwoColumn && (
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ borderColor: '#2D53A4', mx: 1 }}
+            />
+          )}
+
+          {/* Right Column */}
+          {isTwoColumn && (
+            <Grid item xs={5}>
+              {content.right?.title && (
+                <Typography
+                  variant="h6"
+                  sx={{
+                    pb: 1,
+                    mb: 2,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                  }}
+                >
+                  {content.right.title}
+                </Typography>
+              )}
+              {content.right.items.map((item, i) => (
+                <Box
+                  key={i}
+                  sx={{
+                    my: 1,
+                    '&:hover': {
+                      backgroundColor: 'rgba(221, 207, 202, 0.1)',
+                      borderRadius: 1,
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: '#fff',
+                      px: 1,
+                      py: 0.5,
+                      '&:hover': {
+                        cursor: 'pointer',
+                      },
+                    }}
+                  >
+                    {item}
+                  </Typography>
+                </Box>
+              ))}
+            </Grid>
+          )}
+        </Grid>
+      </Box>
+    );
+  };
 
 
   // Bottom menu logic
@@ -344,7 +344,7 @@ const renderMenu = (label) => {
     setBottomAnchorEl(event.currentTarget);
     setActiveBottomMenu(label);
   };
-  
+
 
 
   const handleBottomMenuClose = () => {
@@ -475,7 +475,7 @@ const renderMenu = (label) => {
           onClose={() => setBottomAnchorEl(null)}
           MenuListProps={{
             onMouseEnter: cancelBottomMenuClose,
-            onMouseLeave: handleBottomMenuClose, 
+            onMouseLeave: handleBottomMenuClose,
 
             sx: {
               p: 3,
@@ -603,10 +603,10 @@ const renderMenu = (label) => {
         <Menu
           anchorEl={bottomAnchorEl}
           open={bottomOpen && activeBottomMenu === menuKey}
-          onClose={() => setBottomAnchorEl(null)} 
+          onClose={() => setBottomAnchorEl(null)}
           MenuListProps={{
             onMouseEnter: cancelBottomMenuClose,
-            onMouseLeave: handleBottomMenuClose, 
+            onMouseLeave: handleBottomMenuClose,
             sx: {
               p: 3,
               width: '100vw',
@@ -717,7 +717,7 @@ const renderMenu = (label) => {
         onClose={() => setBottomAnchorEl(null)}
         MenuListProps={{
           onMouseEnter: cancelBottomMenuClose,
-          onMouseLeave: handleBottomMenuClose, 
+          onMouseLeave: handleBottomMenuClose,
           sx: {
             p: 3,
             width: '100vw',
@@ -817,7 +817,7 @@ const renderMenu = (label) => {
         <React.Fragment key={link}>
           <Button
             onMouseEnter={(e) => handleBottomMenuOpen(e, link)}
-            onMouseLeave={handleBottomMenuClose} 
+            onMouseLeave={handleBottomMenuClose}
             endIcon={<ArrowDropDownIcon sx={{ color: '#fff' }} />}
             sx={{
               textTransform: 'none',
@@ -844,150 +844,150 @@ const renderMenu = (label) => {
   return (
     <>
       {/* Top Section */}
-    <AppBar position="static" sx={{ backgroundColor: '#000', px: 4, py: 1 }}>
-  <Toolbar sx={{ 
-    display: 'flex', 
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    minHeight: '64px !important', // Ensures consistent height
-  }}>
-    {/* Left Logo and Text */}
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-      <img
-        src={igsLogo}
-        alt="Logo"
-        style={{ height: 40 }}
-      />
-
-      {/* Vertical Divider */}
-      <Divider 
-        orientation="vertical" 
-        flexItem 
-        sx={{ 
-          backgroundColor: 'rgba(255,255,255,0.3)', 
-          height: 40,
-          my: 'auto'
-        }} 
-      />
-
-      <Box sx={{ 
-        display: 'flex',
-        flexDirection: 'column',
-        lineHeight: 1.2
-      }}>
-        <Typography
-          variant="caption"
-          sx={{
-            color: 'white',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 700,
-            fontSize: '0.8125rem',
-            letterSpacing: '0.5px'
-          }}
-        >
-          RESHAPING
-        </Typography>
-        <Typography
-          variant="caption"
-          sx={{
-            color: 'white',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 700,
-            fontSize: '0.8125rem',
-            letterSpacing: '0.5px'
-          }}
-        >
-          PROCUREMENT
-        </Typography>
-        <Typography
-          variant="caption"
-          sx={{
-            color: 'white',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 700,
-            fontSize: '0.8125rem',
-            letterSpacing: '0.5px'
-          }}
-        >
-          THROUGH INNOVATION
-        </Typography>
-      </Box>
-    </Box>
-
-    {/* Right Top Menu Items + Menu Icon */}
-  <Box sx={{ 
-  display: 'flex', 
-  alignItems: 'center',
-  gap: 1,
-  position: 'relative',
-  marginLeft: 'auto' // This pushes the menu to the right
-}}>
-  {topLinks.map(link => (
-    <Box
-      key={link}
-      onMouseOver={() => setActiveMenu(link)}
-      onMouseLeave={() => setActiveMenu(null)} // Add small delay
-      sx={{ 
-        position: 'relative', 
-        display: 'inline-block',
-      }}
-    >
-      <Typography
-        variant="body2" // Changed from button to body2 for smaller size
-        sx={{
-          color: activeMenu === link ? '#2D53A4' : '#fff',
-          fontWeight: activeMenu === link ? 600 : 400,
-          px: 1.5,
-          py: 1,
-          borderRadius: 1,
-          cursor: 'pointer',
+      <AppBar position="static" sx={{ backgroundColor: '#000', px: 4, py: 1 }}>
+        <Toolbar sx={{
           display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          gap: 0.5,
-          backgroundColor: 'transparent',
-          fontSize: '0.8125rem', // 13px equivalent
-          '&:hover': {
-            color: '#2D53A4',
-            backgroundColor: 'rgba(255,255,255,0.05)'
-          }
-        }}
-      >
-        {link}
-        <ArrowDropDownIcon fontSize="inherit" sx={{ fontSize: '0.9rem' }} />
-      </Typography>
+          minHeight: '64px !important', // Ensures consistent height
+        }}>
+          {/* Left Logo and Text */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <img
+              src={igsLogo}
+              alt="Logo"
+              style={{ height: 40 }}
+            />
 
-  {activeMenu === link && (
-  <Box
-    sx={{
-      position: 'absolute',
-      top: '100%', // Position directly below the link
-      right: 0,
-      zIndex: 1200,
-      mt: 0, // No margin top
-       mb: 0,
-    }}
-  >
-    {renderMenu(link)}
-  </Box>
-)}
-    </Box>
-  ))}
-      
-      {/* Rightmost Menu Icon */}
-      <IconButton
-        color="inherit"
-        sx={{
-          ml: 1,
-          '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.1)'
-          }
-        }}
-      >
-        <MenuIcon />
-      </IconButton>
-    </Box>
-  </Toolbar>
-</AppBar>
+            {/* Vertical Divider */}
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{
+                backgroundColor: 'rgba(255,255,255,0.3)',
+                height: 40,
+                my: 'auto'
+              }}
+            />
+
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              lineHeight: 1.2
+            }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: 'white',
+                  fontFamily: 'Poppins, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '0.8125rem',
+                  letterSpacing: '0.5px'
+                }}
+              >
+                RESHAPING
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: 'white',
+                  fontFamily: 'Poppins, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '0.8125rem',
+                  letterSpacing: '0.5px'
+                }}
+              >
+                PROCUREMENT
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: 'white',
+                  fontFamily: 'Poppins, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '0.8125rem',
+                  letterSpacing: '0.5px'
+                }}
+              >
+                THROUGH INNOVATION
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* Right Top Menu Items + Menu Icon */}
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            position: 'relative',
+            marginLeft: 'auto' // This pushes the menu to the right
+          }}>
+            {topLinks.map(link => (
+              <Box
+                key={link}
+                onMouseOver={() => setActiveMenu(link)}
+                onMouseLeave={() => setActiveMenu(null)} // Add small delay
+                sx={{
+                  position: 'relative',
+                  display: 'inline-block',
+                }}
+              >
+                <Typography
+                  variant="body2" // Changed from button to body2 for smaller size
+                  sx={{
+                    color: activeMenu === link ? '#2D53A4' : '#fff',
+                    fontWeight: activeMenu === link ? 600 : 400,
+                    px: 1.5,
+                    py: 1,
+                    borderRadius: 1,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    backgroundColor: 'transparent',
+                    fontSize: '0.8125rem', // 13px equivalent
+                    '&:hover': {
+                      color: '#2D53A4',
+                      backgroundColor: 'rgba(255,255,255,0.05)'
+                    }
+                  }}
+                >
+                  {link}
+                  <ArrowDropDownIcon fontSize="inherit" sx={{ fontSize: '0.9rem' }} />
+                </Typography>
+
+                {activeMenu === link && (
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: '100%', // Position directly below the link
+                      right: 0,
+                      zIndex: 1200,
+                      mt: 0, // No margin top
+                      mb: 0,
+                    }}
+                  >
+                    {renderMenu(link)}
+                  </Box>
+                )}
+              </Box>
+            ))}
+
+            {/* Rightmost Menu Icon */}
+            <IconButton
+              color="inherit"
+              sx={{
+                ml: 1,
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                }
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
 
       {/* Bottom Section */}
       <AppBar position="sticky" sx={{ backgroundColor: '#0a0a0a', paddingX: 4, boxShadow: 'none' }}>
