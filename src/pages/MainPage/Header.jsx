@@ -10,6 +10,15 @@ import worldImage from '../../assets/images/Mask group.png';
 import videoImage from '../../assets/images/video.png';
 import igsLogo from '../../assets/images/igs-logo-procurement.png';
 
+import createImage1 from '../../assets/images/create-img-1.png';
+import createImage2 from '../../assets/images/create-img-2.png';
+import createImage3 from '../../assets/images/create-img-3.png';
+import badgeIcon from '../../assets/images/badge.png';
+import worldSettingImg from '../../assets/images/world-setting.png';
+import linesImage from '../../assets/images/Group.png';
+import chooseUsImage from '../../assets/images/choose-us-image.png';
+
+
 import { Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container, Stack } from "@mui/material";
 export default function LandingPage() {
 
@@ -60,6 +69,33 @@ export default function LandingPage() {
       description: 'Simplify your supply chain with 1IGS, an efficient end-to-end management system with real-time visibility. Integrate into global logistics, streamline operations, and gain a competitive edge with tools for the connected enterprise.\n \n Call us today and discover how 1IGS can redefine your supply chain and fuel your business growth.',
       buttonText: 'DISCOVER IIGS TODAY »',
       image: igsLogo
+    },
+  ];
+
+  const createFeatures = [
+    {
+      title: 'STRATEGY',
+      subtitle: 'TAKE PROCUREMENT TO THE NEXT LEVEL',
+      description:
+        'Transform your business with 1IGS. We cut costs, improve efficiency, and drive growth through smarter workflows and collaboration.',
+      image: createImage1,
+      button: 'EXPLORE 1IGS STRATEGY  »',
+    },
+    {
+      title: 'iSOURCE',
+      subtitle: 'INTEGRATED SOURCING AND PROCUREMENT SOLUTIONS',
+      description:
+        'i1IGS offers end-to-end sourcing solutions, from cost estimation to delivery, streamlining, and optimizing operations.',
+      image: createImage2,
+      button: 'DRIVE EFFICIENCY WITH 1IGS  »',
+    },
+    {
+      title: 'iFREIGHT',
+      subtitle: 'STREAMLINE YOUR LOGISTICS WITH 1IGS',
+      description:
+        '1IGS provides seamless ocean, air, ground freight, and LCL shipping solutions, simplifying logistics to save time and grow your business.',
+      image: createImage3,
+      button: 'SEE RESULTS, CONTACT US  »',
     },
   ];
 
@@ -658,6 +694,120 @@ export default function LandingPage() {
               ))}
             </Grid>
           </Container>
+        </Box>
+
+
+        {/* Top Section */}
+        <Box sx={{ px: 4, py: 6, backgroundColor: '#f4f9ff', textAlign: 'center' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+            <Box component="img" src={badgeIcon} sx={{ width: 48 }} />
+          </Box>
+          <Typography variant="h5" sx={{
+            fontWeight: 750, mb: 1, color: "#2D53A4",
+            fontFamily: "Poppins, sans-serif",
+          }}>
+            Let’s Create
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 4, maxWidth: 1000, mx: 'auto', textAlign: 'left', fontFamily: "Poppins, sans-serif", color: '#393939' }}>
+            Simplify your supply chain today with our tailored outsourcing solutions. Whether you’re looking to save time, cut costs, or improve your supplier relationships, we’ve got you covered.        </Typography>
+
+          {/* Feature Cards */}
+          <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, py: 4 }}>
+            <Grid container spacing={3} justifyContent="center">
+              {createFeatures.map((f, idx) => (
+                <Grid item xs={12} sm={6} md={4} key={idx}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      borderRadius: 2,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      textAlign: 'left',
+                      boxShadow: 3,
+                    }}
+                  >
+                    <Box>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
+  <Box component="span" sx={{ color: '#F36434' }}>1IGS </Box>
+  <Box component="span" sx={{ color: '#2D53A4' }}>{f.title}</Box>
+</Typography>
+                      <Box
+                        component="img"
+                        src={f.image}
+                        alt={f.title}
+                        sx={{ width: '100%', borderRadius: 1, mb: 2 }}
+                      />
+                      <Typography variant="h6" sx={{ fontWeight: 300, fontSize: 15 }}>
+                        {f.subtitle}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ my: 1, color: '#4D4D4D', fontFamily: 'Poppins, sans-serif' }}
+                      >
+                        {f.description}
+                      </Typography>
+                    </Box>
+
+                    <Button
+                      variant="contained"
+                      sx={{ mt: 2, backgroundColor: '#2D53A4', alignSelf: 'flex-start' }}
+                    >
+                      {f.button}
+                    </Button>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Box>
+
+        {/* Why Choose Us Section */}
+        <Box
+          sx={{
+            backgroundColor: '#2D53A4',
+            color: '#fff',
+            py: 6,
+            px: 4,
+            backgroundImage: `url(${linesImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >      <Grid container spacing={4} alignItems="center">
+            {/* Left Text Column */}
+            <Grid item xs={12} md={6}>
+              <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
+                <Box component="img" src={worldSettingImg} sx={{ width: 40, mr: 2 }} />
+                <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                  Why Choose Us?
+                </Typography>
+              </Box>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                Spend less time worrying about procurement and more time scaling your business. Our end-to-end solutions save you time and resources.
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                <span style={{ fontWeight: 600, color: '#F36434' }}>Cost Savings That Matter</span><br />
+                Lower your operational costs without compromising quality.
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                <span style={{ fontWeight: 600, color: '#F36434' }}>Experience You Can Trust</span><br />
+                We help you achieve better pricing, streamlined processes, and fewer inefficiencies.
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                <span style={{ fontWeight: 600, color: '#F36434' }}>Tailored to Your Needs</span><br />
+                No “one size fits all” here. We customize solutions for your goals and industry.
+              </Typography>
+              <Button variant="contained" sx={{ mt: 2, backgroundColor: '#fff', color: '#2D53A4', fontWeight: 'bold' }}>
+                UNLOCK YOUR BUSINESS’S FULL POTENTIAL WITH IIGS →
+              </Button>
+            </Grid>
+            {/* Right Image Column */}
+            <Grid item xs={12} md={6}>
+              <Box component="img" src={chooseUsImage} sx={{ width: '90%', }} />
+            </Grid>
+          </Grid>
         </Box>
       </div>
 
