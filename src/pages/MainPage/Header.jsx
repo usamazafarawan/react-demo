@@ -66,6 +66,7 @@ import youtube_icon from '../../assets/images/youtube.png';
 import linkedin_icon from '../../assets/images/linkedin.png';
 import x_icon from '../../assets/images/x_icon.png';
 import facebook_icon from '../../assets/images/facebook.png';
+import footer_bar from '../../assets/images/footer_bar.png';
 
 
 
@@ -1442,16 +1443,17 @@ export default function LandingPage() {
           sx={{
             position: 'relative',
             color: '#fff',
-            py: 6,
+            py: 1,
             px: 4,
             backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${footer_bg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            px:0
           }}
         >
           {/* Top Icon with centered container */}
           <Container maxWidth="lg">
-            <Box sx={{ mb: 4, textAlign: 'left' }}>
+            <Box sx={{ mb: 4, textAlign: 'left', mt:3 }}>
               <Box
                 component="img"
                 src={igs_procurement}
@@ -1665,6 +1667,51 @@ export default function LandingPage() {
               ))}
             </Grid>
           </Container>
+ <Box
+  sx={{
+       py: 1,
+        px: 4,
+       position: 'relative',
+
+    width: '100%', // Ensure full width
+    mt: 6,
+    backgroundImage: `url(${footer_bar})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: 60,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    px: { xs: 2, sm: 4, md: 6 }, // responsive horizontal padding
+  }}
+>
+  <Typography
+    variant="body2"
+    sx={{
+      color: '#fff',
+      fontFamily: 'Poppins, sans-serif',
+      fontSize: 13,
+      fontWeight: 400,
+    }}
+  >
+Privacy Center | Privacy Policy | Terms and Conditions  </Typography>
+</Box>
+{/* Copyright Section */}
+
+  <Typography
+    variant="body2"
+    sx={{
+      color: '#fff',
+      fontFamily: 'Poppins, sans-serif',
+      fontSize: 16,
+      display:'flex',
+      justifyContent:'center',
+      mt:1
+    }}
+  >
+   @ Copyright 2017-2025 1IGS Corporation. ALL Rights Reserved
+  </Typography>
         </Box>
 
       </div>
