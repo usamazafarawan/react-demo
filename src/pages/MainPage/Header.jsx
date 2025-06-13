@@ -70,7 +70,13 @@ import footer_bar from '../../assets/images/footer_bar.png';
 
 import design_bg from '../../assets/images/design-bg.png';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation'; // if using navigation buttons
+import 'swiper/css/pagination'; // if using pagination
 
+// Optional modules
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import {
   Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container,
@@ -171,7 +177,7 @@ export default function LandingPage() {
       description2:
         '1IGS builds partnerships to drive ROI and long-term growth, helping businesses achieve their goals with future-ready solutions.',
       image: logisticsImage,
-      button: `Unlock your business's  »`,
+      button: `Unlock Business Potential  »`,
     },
     {
       title: 'PROVEN EXPERTISE',
@@ -189,14 +195,14 @@ export default function LandingPage() {
       image: discussionImage,
       button: `Let's Build Together  »`,
     },
-    //     {
-    //   title: 'TOP SUPPLIER SOURCING',
-    //   description1: 'We Apply Our Industry Expertise Both Locally And  Internationally',
-    //   description2:
-    //     'Streamline your supply chain with 1IGS. Find suppliers, source materials, and cut costs to boost ROI in manufacturing, retail, and e-commerce.',
-    //   image: groupImage,
-    //   button: 'Partner with us today  »',
-    // },
+        {
+      title: 'TOP SUPPLIER SOURCING',
+      description1: 'We Apply Our Industry Expertise Both Locally And  Internationally',
+      description2:
+        'Streamline your supply chain with 1IGS. Find suppliers, source materials, and cut costs to boost ROI in manufacturing, retail, and e-commerce.',
+      image: groupImage,
+      button: 'Partner with us today  »',
+    },
     //     {
     //   title: 'TAILORED STRATEGIES FOR SUCCESS',
     //   description1: 'Streamline operations for success and flexibility with 1IGS',
@@ -206,6 +212,9 @@ export default function LandingPage() {
     //   button: 'Transform your supply chain  »',
     // },
   ];
+
+    const [firstItem, ...restItems] = supplyChain;
+
 
   const embeddedList = [
     {
@@ -1155,54 +1164,112 @@ export default function LandingPage() {
 
           </Typography>
           {/* Feature Cards */}
-          <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, py: 4 }}>
-            <Grid container spacing={3} justifyContent="center">
-              {supplyChain.map((f, idx) => (
-                <Grid item xs={12} sm={6} md={4} key={idx}>
-                  <Paper
-                    sx={{
-                      p: 2,
-                      borderRadius: 2,
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      textAlign: 'left',
-                      boxShadow: 3,
-                    }}
-                  >
-                    <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
-                        <Box component="span" sx={{ color: '#F36434' }}>{f.title}</Box>
-                      </Typography>
-                      <Box
-                        component="img"
-                        src={f.image}
-                        alt={f.title}
-                        sx={{ width: '100%', borderRadius: 1, mb: 2 }}
-                      />
-                      <Typography variant="h6" sx={{ fontWeight: 300, fontSize: 14 }}>
-                        {f.description1}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{ my: 1, fontWeight: 300, fontSize: 14 }}
-                      >
-                        {f.description2}
-                      </Typography>
-                    </Box>
+   <Box sx={{ maxWidth: '1200px', mx: 'auto', px: 2, py: 4 }}>
+      <Grid container spacing={3} justifyContent="center">
+        {/* First Item - full height or special size */}
+        <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Paper
+            sx={{
+              p: 2,
+              borderRadius: 2,
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              textAlign: 'left',
+              boxShadow: 3,
+            }}
+          >
+            <Box sx={{ flexGrow: 1 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1, color: '#F36434' }}>
+                {firstItem.title}
+              </Typography>
+              <Box component="img" src={firstItem.image} alt={firstItem.title} sx={{ width: '100%', borderRadius: 1, mb: 2 }} />
+              <Typography variant="body2" sx={{ fontWeight: 300, fontSize: 14 }}>{firstItem.description1}</Typography>
+              <Typography variant="body2" sx={{ my: 1, fontWeight: 300, fontSize: 14 }}>{firstItem.description2}</Typography>
+            </Box>
+            <Button
+              variant="contained"
+              sx={{
+                mt: 2,
+                backgroundColor: '#2D53A4',
+                alignSelf: 'flex-start',
+                fontSize: 12,
+                fontFamily: 'Poppins, sans-serif',
+                '&:hover': { backgroundColor: '#1f3a75' },
+              }}
+            >
+              {firstItem.button}
+            </Button>
+          </Paper>
+        </Grid>
 
-                    <Button
-                      variant="contained"
-                      sx={{ mt: 2, backgroundColor: '#2D53A4', alignSelf: 'flex-start' }}
-                    >
-                      {f.button}
-                    </Button>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+        {/* Remaining Items */}
+  {restItems.map((f, idx) => (
+    <Grid item xs={12} sm={6} md={4} lg={3} key={idx} sx={{ display: 'flex' }}>
+      <Paper
+        sx={{
+          p: 2,
+          borderRadius: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          textAlign: 'left',
+          boxShadow: 3,
+          width: '100%',
+          height:'95%'
+        }}
+      >
+        {/* Content */}
+        <Box sx={{ flexGrow: 1 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1, color: '#F36434' }}>
+            {f.title}{idx}
+          </Typography>
+
+          <Box
+            component="img"
+            src={f.image}
+            alt={f.title}
+            sx={{ width: '100%', borderRadius: 1, mb: 2 }}
+          />
+
+          <Typography
+            variant="body2"
+            sx={{ fontWeight: 300, fontSize: 14, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}
+          >
+            {f.description1}
+          </Typography>
+
+          <Typography
+            variant="body2"
+            sx={{ my: 1, fontWeight: 300, fontSize: 14, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}
+          >
+            {f.description2}
+          </Typography>
+        </Box>
+
+        {/* Button */}
+        <Box sx={{ mt: 1
+         }}>
+          <Button
+            variant="contained"
+            fullWidth
+            sx={{
+              backgroundColor: '#2D53A4',
+              fontSize: 12,
+              fontFamily: 'Poppins, sans-serif',
+              '&:hover': { backgroundColor: '#1f3a75' },
+            }}
+          >
+            {f.button}
+          </Button>
+        </Box>
+      </Paper>
+    </Grid>
+  ))}
+      </Grid>
+    </Box>
+
 
           <Box
             sx={{
