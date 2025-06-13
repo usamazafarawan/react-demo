@@ -61,6 +61,13 @@ import footer_bg from '../../assets/images/footer_bg.png';
 import igs_procurement from '../../assets/images/igs_procurement.png';
 import play_icon from '../../assets/images/play_icon.png';
 
+import insta_icon from '../../assets/images/insta.png';
+import youtube_icon from '../../assets/images/youtube.png';
+import linkedin_icon from '../../assets/images/linkedin.png';
+import x_icon from '../../assets/images/x_icon.png';
+import facebook_icon from '../../assets/images/facebook.png';
+
+
 
 
 import {
@@ -1525,6 +1532,131 @@ export default function LandingPage() {
                             // ml: 4, // 3 (icon) + 1 (gap)
                             width: 'calc(100% - 32px)' // 24px icon + gap compensation
                           }} />
+                        )}
+
+
+
+                        {/* Add Stay Connected section after last item */}
+                        {i === column.items.length - 1 && column.heading === 'Company' && (
+                          <>
+                            <Divider sx={{ borderColor: '#506BA4', opacity: 0.6, my: 3 }} />
+
+                            {/* Stay Connected Heading */}
+                            <Typography
+                              variant="subtitle1"
+                              sx={{
+                                fontWeight: 700,
+                                mb: 2,
+                                fontFamily: 'Poppins, sans-serif',
+                                color: '#fff',
+                              }}
+                            >
+                              Stay Connected
+                            </Typography>
+
+                            {/* Social Media Icons */}
+                            <Box sx={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 2,
+                              mb: 3
+                            }}>
+                              {/* First row with 3 icons */}
+                              <Box sx={{ display: 'flex', gap: 2 }}>
+                                {[facebook_icon, insta_icon, linkedin_icon].map((social) => (
+                                  <Box
+                                    key={social}
+                                    component="img"
+                                    src={social}
+                                    alt={social}
+                                    sx={{
+                                      width: 24,
+                                      height: 24,
+                                      cursor: 'pointer'
+                                    }}
+                                  />
+                                ))}
+                              </Box>
+
+                              {/* Second row with 2 icons */}
+                              <Box sx={{ display: 'flex', gap: 2 }}>
+                                {[youtube_icon, x_icon].map((social) => (
+                                  <Box
+                                    key={social}
+                                    component="img"
+                                    src={social}
+                                    alt={social}
+                                    sx={{
+                                      width: 24,
+                                      height: 24,
+                                      cursor: 'pointer'
+                                    }}
+                                  />
+                                ))}
+                              </Box>
+                            </Box>
+                            {/* Subscribe Section */}
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontWeight: 600,
+                                mb: 1,
+                                fontFamily: 'Poppins, sans-serif',
+                                color: '#fff',
+                              }}
+                            >
+                              Subscribe
+                            </Typography>
+
+                            <Box sx={{
+                              display: 'flex',
+                              mb: 2,
+                              '& .MuiOutlinedInput-root': {
+                                borderTopRightRadius: 0,
+                                borderBottomRightRadius: 0,
+                              },
+                              '& .MuiButton-root': {
+                                borderTopLeftRadius: 0,
+                                borderBottomLeftRadius: 0,
+                              }
+                            }}>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                placeholder="Your email"
+                                sx={{
+                                  flex: 1,
+                                  '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                      borderColor: '#fff',
+                                      borderRight: 'none' // Remove right border
+                                    },
+                                    backgroundColor: 'rgba(255,255,255,0.1)',
+                                  },
+                                  '& .MuiInputBase-input': {
+                                    py: '8px',
+                                    fontSize: 14,
+                                    color: '#fff',
+                                  },
+                                }}
+                              />
+                              <Button
+                                variant="contained"
+                                sx={{
+                                  backgroundColor: '#F36434',
+                                  color: '#fff',
+                                  px: 2,
+                                  minWidth: 'unset',
+                                  ml: 0, // Remove left margin
+                                  '&:hover': {
+                                    backgroundColor: '#F36434',
+                                  }
+                                }}
+                              >
+                                Go
+                              </Button>
+                            </Box>
+                          </>
                         )}
                       </Box>
                     ))}
