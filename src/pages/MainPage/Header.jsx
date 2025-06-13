@@ -68,6 +68,7 @@ import x_icon from '../../assets/images/x_icon.png';
 import facebook_icon from '../../assets/images/facebook.png';
 import footer_bar from '../../assets/images/footer_bar.png';
 
+import design_bg from '../../assets/images/design-bg.png';
 
 
 
@@ -1234,80 +1235,115 @@ export default function LandingPage() {
 
 
         {/*  EMBEDED Section */}
-        <Box sx={{ px: 4, py: 6, backgroundColor: '#fff', textAlign: 'left' }}>
-          <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2 }}>
-            {/* Aligned Heading */}
+        <Box
+  sx={{
+    px: 4,
+    py: 6,
+    backgroundColor: '#fff',
+    position: 'relative', // needed for absolute children
+    overflow: 'hidden',   // hides image overflow if needed
+  }}
+>
+  {/* Left design image */}
+  <Box
+    component="img"
+    src={design_bg} // replace with your image import or path
+    alt="Design Left"
+    sx={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      height: '100%',
+      zIndex: 0,
+    }}
+  />
+
+  {/* Right design image */}
+  <Box
+    component="img"
+    src={design_bg} // replace with your image import or path
+    alt="Design Right"
+    sx={{
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      height: '100%',
+      zIndex: 0,
+    }}
+  />
+
+  {/* Content with higher zIndex */}
+  <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, position: 'relative', zIndex: 1 }}>
+    <Typography
+      variant="h5"
+      sx={{
+        fontWeight: 'bold',
+        mb: 3,
+        color: '#2D53A4',
+        fontFamily: 'Poppins, sans-serif',
+      }}
+    >
+      DOING WELL TO DO GOOD IS EMBEDDED IN OUR DNA
+    </Typography>
+
+    <Grid container spacing={4} justifyContent="center">
+      {embeddedList.map((f, idx) => (
+        <Grid item xs={12} sm={6} md={3} key={idx}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography
-              variant="h5"
+              variant="subtitle2"
               sx={{
-                fontWeight: 'bold',
-                mb: 3,
-                color: '#2D53A4',
+                fontWeight: 700,
+                mb: 1,
+                color: '#F36434',
                 fontFamily: 'Poppins, sans-serif',
               }}
             >
-              DOING WELL TO DO GOOD IS EMBEDDED IN OUR DNA
+              {f.title}
             </Typography>
 
-            {/* Feature Cards */}
-            <Grid container spacing={4} justifyContent="center">
-              {embeddedList.map((f, idx) => (
-                <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{
-                        fontWeight: 700,
-                        mb: 1,
-                        color: '#F36434',
-                        fontFamily: 'Poppins, sans-serif',
-                      }}
-                    >
-                      {f.title}
-                    </Typography>
+            <Box
+              component="img"
+              src={f.image}
+              alt={f.title}
+              sx={{ width: '100%', mb: 2, borderRadius: 1 }}
+            />
 
-                    <Box
-                      component="img"
-                      src={f.image}
-                      alt={f.title}
-                      sx={{ width: '100%', mb: 2, borderRadius: 1 }}
-                    />
+            <Typography
+              variant="body2"
+              sx={{
+                color: '#393939',
+                fontSize: 12,
+                mb: 2,
+                fontFamily: 'Poppins, sans-serif',
+              }}
+            >
+              {f.description1}
+            </Typography>
 
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: '#393939',
-                        fontSize: 12,
-                        mb: 2,
-                        fontFamily: 'Poppins, sans-serif',
-                      }}
-                    >
-                      {f.description1}
-                    </Typography>
-
-                    {f.button && (
-                      <Button
-                        variant="contained"
-                        sx={{
-                          fontSize: 10,
-                          backgroundColor: '#2D53A4',
-                          color: '#fff',
-                          alignSelf: 'flex-start',
-                          fontFamily: 'Poppins, sans-serif',
-                          '&:hover': {
-                            backgroundColor: '#1f3a75',
-                          },
-                        }}
-                      >
-                        {f.button}
-                      </Button>
-                    )}
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
+            {f.button && (
+              <Button
+                variant="contained"
+                sx={{
+                  fontSize: 10,
+                  backgroundColor: '#2D53A4',
+                  color: '#fff',
+                  alignSelf: 'flex-start',
+                  fontFamily: 'Poppins, sans-serif',
+                  '&:hover': {
+                    backgroundColor: '#1f3a75',
+                  },
+                }}
+              >
+                {f.button}
+              </Button>
+            )}
           </Box>
-        </Box>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
+</Box>
 
 
         {/* TAKE THE NEXT STEP */}
