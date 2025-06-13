@@ -47,10 +47,30 @@ import bulbImage from '../../assets/images/bulb.png';
 import gatheringImage from '../../assets/images/gathering.png';
 import esgImage from '../../assets/images/esg.png';
 import cheersImage from '../../assets/images/cheers.png';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import callSectionBgImage from '../../assets/images/call_section_bg.png';
+
+import note_icon from '../../assets/images/note-icon.png';
+import message_icon from '../../assets/images/message-icon.png';
+import tv_icon from '../../assets/images/tv-icon.png';
+import ask_us_icon from '../../assets/images/ask-us-icon.png';
+import phone_icon from '../../assets/images/phone-icon.png';
+import arrow_icon from '../../assets/images/arrowVector.png';
 
 
 
-import { Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container, Stack, Card, CardActionArea, CardMedia, CardContent, } from "@mui/material";
+
+import {
+  Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container,
+  Stack, Card, CardActionArea, CardMedia, CardContent,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  List,
+  ListItem,
+  ListItemText,
+  TextField,
+} from "@mui/material";
 export default function LandingPage() {
 
   const [tabIndex, setTabIndex] = React.useState(1);
@@ -223,6 +243,31 @@ export default function LandingPage() {
     { title: 'Automotive', image: automotiveImage },
     { title: 'Aviation & Refueling', image: aviationImage },
   ];
+
+
+  const callList = [
+
+    {
+      title: 'Ask Us',
+      description1: `Send us your question(s).`,
+      image: ask_us_icon,
+    },
+    {
+      title: 'RFP',
+      description1: `Request for a business proposal`,
+      image: note_icon,
+    },
+    {
+      title: 'Feedback',
+      description1: `Share your thoughts, comments and suggestions`,
+      image: message_icon,
+    },
+    {
+      title: 'Speak to an Expert',
+      description1: `Schedule a consult with a specialist`,
+      image: tv_icon,
+    },
+  ]
 
   const displayedIndustries = showAll ? industries : industries.slice(0, 11);
 
@@ -1170,6 +1215,135 @@ export default function LandingPage() {
                 </Grid>
               ))}
             </Grid>
+          </Box>
+        </Box>
+
+
+        {/* TAKE THE NEXT STEP */}
+        <Box
+          sx={{
+            color: '#fff',
+            py: 6,
+            px: 4,
+            backgroundImage: `url(${callSectionBgImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <Box sx={{ textAlign: 'center' }}>
+            {/* Centered Icon + Text Inline */}
+            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Box component="img" src={phone_icon} alt="Phone Icon" sx={{ width: 40, height: 40, mr: 2 }} />
+              <Typography variant="h5" sx={{ fontWeight: 700, color: '#fff', fontFamily: 'Poppins, sans-serif' }}>
+                TAKE THE NEXT STEP
+              </Typography>
+            </Box>
+
+            {/* Centered Paragraph */}
+            <Typography
+              variant="body1"
+              sx={{
+                mb: 1,
+                maxWidth: 800,
+                mx: 'auto',
+                textAlign: 'left',
+                fontFamily: 'Poppins, sans-serif',
+                color: '#fff',
+                fontSize: 12
+              }}
+            >
+              We provide customized solutions to meet your needs, blending innovation and excellence to enhance your life and deliver results. At 1IGS, we’re redefining Global Procurement and Supply Chain. With strong ethics, a commitment to sustainability, and support for local communities, we address challenges while making a meaningful impact.
+            </Typography>
+            {/* Feature Cards */}
+            <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, py: 4 }}>
+              <Grid container spacing={3} justifyContent="center">
+                {callList.map((item, idx) => (
+                  <Grid item xs={12} sm={6} md={3} key={idx}>
+                    <Box
+                      sx={{
+                        borderRadius: 3,
+                        p: 3,
+                        width: 230, // ✅ fixed width for all cards
+                        height: 160, // optional fixed height to match layout
+                        mx: 'auto',
+                        position: 'relative',
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'transparent',
+                        boxShadow: 1,
+                        border: '1px solid #e0e0e0',
+                      }}
+                    >
+                      {/* Arrow Icon Box */}
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: 5,
+                          right: 5,
+                          backgroundColor: '#fff',
+                          borderRadius: 1,
+                          width: 20,
+                          height: 20,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: 2,
+
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={arrow_icon}
+                          alt="arrow"
+                          sx={{
+                            width: 10,
+                            height: 10,
+                            objectFit: 'contain',
+                          }}
+                        />
+                      </Box>
+
+                      {/* Center Icon */}
+                      <Box
+                        component="img"
+                        src={item.image}
+                        alt={item.title}
+                        sx={{ width: 50, height: 50, mb: 2 }}
+                      />
+
+                      {/* Title */}
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          fontWeight: 600,
+                          mb: 1,
+                          color: '#fff',
+                          fontFamily: 'Poppins, sans-serif',
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+
+                      {/* Description */}
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: '#fff',
+                          fontSize: 12,
+                          fontFamily: 'Poppins, sans-serif',
+                        }}
+                      >
+                        {item.description1}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           </Box>
         </Box>
 
