@@ -1355,7 +1355,7 @@ export default function LandingPage() {
                       sx={{
                         borderRadius: 3,
                         p: 3,
-                        width: 320, // ✅ fixed width for all cards
+                        width: 280, // ✅ fixed width for all cards
                         height: 160, // optional fixed height to match layout
                         mx: 'auto',
                         position: 'relative',
