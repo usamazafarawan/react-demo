@@ -283,7 +283,7 @@ export default function LandingPage() {
       heading: 'Supply Chain Consulting',
       items: [
 
-        'SUSTAINABILITY AND RESILIENCE',
+        'Sustainability and Resilience',
         'Supply Chain Strategy',
         'Supply Chain Diagnostics',
         'Inventory Optimization',
