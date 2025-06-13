@@ -170,7 +170,7 @@ export default function LandingPage() {
       description2:
         '1IGS builds partnerships to drive ROI and long-term growth, helping businesses achieve their goals with future-ready solutions.',
       image: logisticsImage,
-      button: `Unlock your business's full potential »`,
+      button: `Unlock your business's  »`,
     },
     {
       title: 'PROVEN EXPERTISE',
