@@ -1473,7 +1473,7 @@ export default function LandingPage() {
                   </Typography>
 
                   {/* List items container with padding */}
-                  <Box sx={{ pl: 2, pr: 1 }}> {/* Adjust padding values as needed */}
+                  <Box sx={{ pl: 0.5, pr: 0.5 }}> {/* Adjust padding values as needed */}
                     {column.items.map((item, i) => (
                       <Box key={i}>
                         <Box
