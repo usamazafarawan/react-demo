@@ -1347,7 +1347,7 @@ export default function LandingPage() {
               We provide customized solutions to meet your needs, blending innovation and excellence to enhance your life and deliver results. At 1IGS, we’re redefining Global Procurement and Supply Chain. With strong ethics, a commitment to sustainability, and support for local communities, we address challenges while making a meaningful impact.
             </Typography>
             {/* Feature Cards */}
-            <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, py: 4 }}>
+            <Box sx={{ maxWidth: '1400px', mx: 'auto', px: 2, py: 4 }}>
               <Grid container spacing={3} justifyContent="center">
                 {callList.map((item, idx) => (
                   <Grid item xs={12} sm={6} md={3} key={idx}>
@@ -1355,7 +1355,7 @@ export default function LandingPage() {
                       sx={{
                         borderRadius: 3,
                         p: 3,
-                        width: 230, // ✅ fixed width for all cards
+                        width: 320, // ✅ fixed width for all cards
                         height: 160, // optional fixed height to match layout
                         mx: 'auto',
                         position: 'relative',
