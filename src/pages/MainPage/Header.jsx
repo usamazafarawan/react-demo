@@ -43,10 +43,14 @@ import discussionImage from '../../assets/images/image (17).png';
 import groupImage from '../../assets/images/image (18).png';
 import techImage from '../../assets/images/image 466.png';
 
+import bulbImage from '../../assets/images/bulb.png';
+import gatheringImage from '../../assets/images/gathering.png';
+import esgImage from '../../assets/images/esg.png';
+import cheersImage from '../../assets/images/cheers.png';
 
 
 
-import { Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container, Stack,Card, CardActionArea, CardMedia, CardContent, } from "@mui/material";
+import { Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container, Stack, Card, CardActionArea, CardMedia, CardContent, } from "@mui/material";
 export default function LandingPage() {
 
   const [tabIndex, setTabIndex] = React.useState(1);
@@ -128,7 +132,7 @@ export default function LandingPage() {
     },
   ];
 
-   const supplyChain = [
+  const supplyChain = [
     {
       title: 'Who is 1IGS?',
       description1: 'We adopt sustainability practices to provide long-term benefits.',
@@ -171,29 +175,54 @@ export default function LandingPage() {
     // },
   ];
 
+  const embeddedList = [
+    {
+      title: 'Corporate Social Responsibility',
+      description1: 'We empower businesses to succeed while supporting communities and protecting the environment, delivering solutions that benefit clients, teams, and society.',
+      image: gatheringImage,
+      button: `Unlock success today »`,
+    },
+    {
+      title: 'Sustainability',
+      description1: `We focus on sustainable, measurable results that empower stakeholders and drive long-term success. By aligning performance with strategy, we help unlock your business's full potential.`,
+      image: esgImage,
+    },
+    {
+      title: 'Credibility',
+      description1: `Our foundation is built on trust and reliability. With decades of commitment, we deliver honesty, predictability, and dependability in every business relationship.`,
+      image: cheersImage,
+    },
+    {
+      title: 'Openness',
+      description1: `We provide tailored solutions focused on your needs, combining innovation and excellence to enhance your quality of life and achieve impactful results.`,
+      image: bulbImage,
+    },
+
+  ];
+
 
   const industries = [
-  { title: 'Agriculture', image: agricultureImage },
-  { title: 'Oil & Gas', image:oil_gasImage },
-  { title: 'Healthcare & Life Sciences', image: healthcareImage },
-  { title: 'Government & Nonprofit', image: governmentNgosImage },
-  { title: 'Construction', image: constructionImage },
-  { title: 'Commodities', image: commoditiesImage },
-  { title: 'Energy & Utilities', image:energyImage },
-  { title: 'Financial Services', image: financialImage },
-  { title: 'Industrial Manufacturing', image:industrial_manufacturingImage },
-  { title: 'Retail', image: retailImage },
-  { title: 'Mining', image: miningImage },
+    { title: 'Agriculture', image: agricultureImage },
+    { title: 'Oil & Gas', image: oil_gasImage },
+    { title: 'Healthcare & Life Sciences', image: healthcareImage },
+    { title: 'Government & Nonprofit', image: governmentNgosImage },
+    { title: 'Construction', image: constructionImage },
+    { title: 'Commodities', image: commoditiesImage },
+    { title: 'Energy & Utilities', image: energyImage },
+    { title: 'Financial Services', image: financialImage },
+    { title: 'Industrial Manufacturing', image: industrial_manufacturingImage },
+    { title: 'Retail', image: retailImage },
+    { title: 'Mining', image: miningImage },
 
 
-  // Additional 6 items for "View All"
-  { title: 'Travel & Hospitality', image: travelImage },
-  { title: 'Chemicals', image: chemicalsImage },
-  { title: 'Consumer Packaged Goods', image: goodsImage },
-  { title: 'Telecommunication, Media & Technology', image: telecommunicationImage },
-  { title: 'Automotive', image: automotiveImage},
-  { title: 'Aviation & Refueling', image: aviationImage },
-];
+    // Additional 6 items for "View All"
+    { title: 'Travel & Hospitality', image: travelImage },
+    { title: 'Chemicals', image: chemicalsImage },
+    { title: 'Consumer Packaged Goods', image: goodsImage },
+    { title: 'Telecommunication, Media & Technology', image: telecommunicationImage },
+    { title: 'Automotive', image: automotiveImage },
+    { title: 'Aviation & Refueling', image: aviationImage },
+  ];
 
   const displayedIndustries = showAll ? industries : industries.slice(0, 11);
 
@@ -288,7 +317,7 @@ export default function LandingPage() {
               color: "#2D53A4",
               fontFamily: "Poppins, sans-serif",
               fontWeight: "bold",
-              fontSize:50
+              fontSize: 50
             }}
             variant="h4"
             align="center"
@@ -317,8 +346,8 @@ export default function LandingPage() {
             </Box>
           </Typography>
           <Typography sx={{
-            mb:2,
-                          fontSize:20,
+            mb: 2,
+            fontSize: 20,
             color: "#393939",
             fontFamily: "Poppins, sans-serif",
           }} align="center" maxWidth="1100px" mx="auto" color="text.secondary" >
@@ -326,7 +355,7 @@ export default function LandingPage() {
           </Typography>
 
 
-          <Box sx={{ backgroundColor: "#EFF7FE", pb: 2 , pt:1}}>
+          <Box sx={{ backgroundColor: "#EFF7FE", pb: 2, pt: 1 }}>
             <Box sx={{ mt: 4, display: "flex", justifyContent: "center", position: "relative" }}>
               {/* Bottom line */}
               <Box
@@ -358,7 +387,7 @@ export default function LandingPage() {
                     label={label}
                     disableRipple
                     sx={{
-                      fontSize:24,
+                      fontSize: 24,
                       textTransform: "none",
                       fontWeight: "bold",
                       minHeight: 45,
@@ -831,10 +860,10 @@ export default function LandingPage() {
                     }}
                   >
                     <Box>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
-  <Box component="span" sx={{ color: '#F36434' }}>1IGS </Box>
-  <Box component="span" sx={{ color: '#2D53A4' }}>{f.title}</Box>
-</Typography>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
+                        <Box component="span" sx={{ color: '#F36434' }}>1IGS </Box>
+                        <Box component="span" sx={{ color: '#2D53A4' }}>{f.title}</Box>
+                      </Typography>
                       <Box
                         component="img"
                         src={f.image}
@@ -916,78 +945,78 @@ export default function LandingPage() {
 
         {/* Industries Section */}
 
-    <Box sx={{ px: 4, py: 6, backgroundColor: '#fff' }}>
-      <Typography variant="h5" color="#2D53A4" fontWeight='bold' gutterBottom>
-        Industries We Serve
-      </Typography>
-      <Typography variant="body1" maxWidth="1100px" sx={{ mb: 4 ,color:'#393939'  , fontFamily: 'Poppins, sans-serif' }}>
-        Optimize your supply chain and achieve real cost savings with IIGS. Our tailored procurement
-        solutions streamline logistics, cut waste, and enhance efficiency.
-      </Typography>
+        <Box sx={{ px: 4, py: 6, backgroundColor: '#fff' }}>
+          <Typography variant="h5" color="#2D53A4" fontWeight='bold' gutterBottom>
+            Industries We Serve
+          </Typography>
+          <Typography variant="body1" maxWidth="1100px" sx={{ mb: 4, color: '#393939', fontFamily: 'Poppins, sans-serif' }}>
+            Optimize your supply chain and achieve real cost savings with IIGS. Our tailored procurement
+            solutions streamline logistics, cut waste, and enhance efficiency.
+          </Typography>
 
-      <Grid container spacing={2}>
-        {displayedIndustries.map((industry, idx) => (
-          <Grid item xs={6} sm={4} md={2} key={idx}>
-            <Card sx={{ borderRadius: 2, height: '100%' }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="100"
-                  image={industry.image}
-                  alt={industry.title}
-                />
-                <CardContent>
-                  <Typography sx={{color:'#040715'  ,fontSize:12, fontFamily: 'Poppins, sans-serif' }} variant="body2" align="center">
-                    {industry.title}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+          <Grid container spacing={2}>
+            {displayedIndustries.map((industry, idx) => (
+              <Grid item xs={6} sm={4} md={2} key={idx}>
+                <Card sx={{ borderRadius: 2, height: '100%' }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="100"
+                      image={industry.image}
+                      alt={industry.title}
+                    />
+                    <CardContent>
+                      <Typography sx={{ color: '#040715', fontSize: 12, fontFamily: 'Poppins, sans-serif' }} variant="body2" align="center">
+                        {industry.title}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))}
+
+            <Grid item xs={6} sm={4} md={2}>
+              <Box
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#e6f0ff',
+                  borderRadius: 2,
+                  textAlign: 'center',
+                  flexDirection: 'column',
+                  py: 2,
+                }}
+              >
+                <Button
+                  variant="text"
+                  onClick={() => setShowAll(!showAll)}
+                  sx={{ fontSize: '0.7rem', color: '#000' }}
+                >
+                  {showAll ? 'View Less <<' : 'View All >>'}
+                </Button>
+              </Box>
+            </Grid>
           </Grid>
-        ))}
-
-        <Grid item xs={6} sm={4} md={2}>
-          <Box
-            sx={{
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#e6f0ff',
-              borderRadius: 2,
-              textAlign: 'center',
-              flexDirection: 'column',
-              py: 2,
-            }}
-          >
-            <Button
-              variant="text"
-              onClick={() => setShowAll(!showAll)}
-              sx={{  fontSize: '0.7rem',color:'#000' }}
-            >
-              {showAll ? 'View Less <<' : 'View All >>'}
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
+        </Box>
 
 
-          {/* Procurement Section */}
+        {/* Procurement Section */}
         <Box sx={{ px: 4, py: 6, backgroundColor: '#f4f9ff', textAlign: 'center' }}>
           <Typography variant="h5" sx={{
             fontWeight: 'bold', mb: 1, color: "#2D53A4",
             fontFamily: "Poppins, sans-serif",
           }}>
-          Procurement and Supply Chain is Our Game
+            Procurement and Supply Chain is Our Game
           </Typography>
           <Typography variant="body1" sx={{ mb: 1, maxWidth: 1000, mx: 'auto', textAlign: 'left', fontFamily: "Poppins, sans-serif", color: '#393939' }}>
-At 1IGS, we transform supply chains with resilience, agility, and sustainability. Our strategies deliver efficiency, results, and lasting impact for businesses globally. Upgrade your operations with future-ready solutions.              </Typography>
+            At 1IGS, we transform supply chains with resilience, agility, and sustainability. Our strategies deliver efficiency, results, and lasting impact for businesses globally. Upgrade your operations with future-ready solutions.              </Typography>
 
-<Typography variant="body1" sx={{ mb: 1, maxWidth: 1000, mx: 'auto', textAlign: 'left', fontFamily: "Poppins, sans-serif", color: '#393939' }}>
-Upgrade your operations with future-ready solutions.        
+          <Typography variant="body1" sx={{ mb: 1, maxWidth: 1000, mx: 'auto', textAlign: 'left', fontFamily: "Poppins, sans-serif", color: '#393939' }}>
+            Upgrade your operations with future-ready solutions.
 
-   </Typography>
+          </Typography>
           {/* Feature Cards */}
           <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, py: 4 }}>
             <Grid container spacing={3} justifyContent="center">
@@ -1006,9 +1035,9 @@ Upgrade your operations with future-ready solutions.
                     }}
                   >
                     <Box>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
-  <Box component="span" sx={{ color: '#F36434' }}>{f.title}</Box>
-</Typography>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
+                        <Box component="span" sx={{ color: '#F36434' }}>{f.title}</Box>
+                      </Typography>
                       <Box
                         component="img"
                         src={f.image}
@@ -1020,7 +1049,7 @@ Upgrade your operations with future-ready solutions.
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ my: 1, fontWeight: 300, fontSize: 14  }}
+                        sx={{ my: 1, fontWeight: 300, fontSize: 14 }}
                       >
                         {f.description2}
                       </Typography>
@@ -1038,32 +1067,112 @@ Upgrade your operations with future-ready solutions.
             </Grid>
           </Box>
 
-            <Box
+          <Box
+            sx={{
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              mb: 5,
+              mt: 4
+            }}
+          >
+
+            <Button
+              variant="contained"
               sx={{
-                textAlign: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                mb: 5,
-                mt: 4
+                fontFamily: 'Poppins, sans-serif',
+                backgroundColor: '#F36434',
+                color: '#fff',
+                '&:hover': {
+                  backgroundColor: '#1f3a75', // darker shade on hover
+                },
               }}
             >
-
-             <Button
-  variant="contained"
-  sx={{
-    fontFamily: 'Poppins, sans-serif',
-    backgroundColor: '#F36434',
-    color: '#fff',
-    '&:hover': {
-      backgroundColor: '#1f3a75', // darker shade on hover
-    },
-  }}
->
-  CONNECT WITH 1IGS TODAY »
-</Button>
-            </Box>
+              CONNECT WITH 1IGS TODAY »
+            </Button>
+          </Box>
         </Box>
+
+
+
+
+        {/*  EMBEDED Section */}
+        <Box sx={{ px: 4, py: 6, backgroundColor: '#fff', textAlign: 'left' }}>
+          <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2 }}>
+            {/* Aligned Heading */}
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 'bold',
+                mb: 3,
+                color: '#2D53A4',
+                fontFamily: 'Poppins, sans-serif',
+              }}
+            >
+              DOING WELL TO DO GOOD IS EMBEDDED IN OUR DNA
+            </Typography>
+
+            {/* Feature Cards */}
+            <Grid container spacing={4} justifyContent="center">
+              {embeddedList.map((f, idx) => (
+                <Grid item xs={12} sm={6} md={3} key={idx}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        fontWeight: 700,
+                        mb: 1,
+                        color: '#F36434',
+                        fontFamily: 'Poppins, sans-serif',
+                      }}
+                    >
+                      {f.title}
+                    </Typography>
+
+                    <Box
+                      component="img"
+                      src={f.image}
+                      alt={f.title}
+                      sx={{ width: '100%', mb: 2, borderRadius: 1 }}
+                    />
+
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: '#393939',
+                        fontSize: 12,
+                        mb: 2,
+                        fontFamily: 'Poppins, sans-serif',
+                      }}
+                    >
+                      {f.description1}
+                    </Typography>
+
+                    {f.button && (
+                      <Button
+                        variant="contained"
+                        sx={{
+                          fontSize: 10,
+                          backgroundColor: '#2D53A4',
+                          color: '#fff',
+                          alignSelf: 'flex-start',
+                          fontFamily: 'Poppins, sans-serif',
+                          '&:hover': {
+                            backgroundColor: '#1f3a75',
+                          },
+                        }}
+                      >
+                        {f.button}
+                      </Button>
+                    )}
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Box>
+
       </div>
 
 
