@@ -57,6 +57,9 @@ import ask_us_icon from '../../assets/images/ask-us-icon.png';
 import phone_icon from '../../assets/images/phone-icon.png';
 import arrow_icon from '../../assets/images/arrowVector.png';
 
+import footer_bg from '../../assets/images/footer_bg.png';
+import igs_procurement from '../../assets/images/igs_procurement.png';
+import play_icon from '../../assets/images/play_icon.png';
 
 
 
@@ -268,6 +271,86 @@ export default function LandingPage() {
       image: tv_icon,
     },
   ]
+
+  const footerData = [
+    {
+      heading: 'Procurement Consulting',
+      items: [`Let's Create`, 'Procurement Consulting', 'Demand & Supply Planning', 'Strategic Sourcing & Category Management', 'Cost of Goods Sold Transformation',
+        'Business Process Outsourcing', 'Procurement Transformation', 'Opportunity Assessment', 'M & A Services', 'Procurement Risk Management', 'Business Process Outsourcing'
+      ],
+    },
+    {
+      heading: 'Supply Chain Consulting',
+      items: [
+
+        'SUSTAINABILITY AND RESILIENCE',
+        'Supply Chain Strategy',
+        'Supply Chain Diagnostics',
+        'Inventory Optimization',
+        'Network Optimization',
+        'Collaborative Planning',
+        'Inventory Strategy & Management',
+        'Operations & Manufacturing Excellence',
+        'Network Strategy & Optimization',
+        'Warehousing & Transportation Management'
+      ],
+
+
+    },
+    {
+      heading: '1IGS iPROCURE',
+      items: [
+        'Direct Procurement',
+        'Indirect Procurement',
+        'Sourcing Support Services',
+        'Unified Source-to-Pay',
+        'Source-To-Contract',
+        'Procure-to-Pay',
+        'Midsize & High Growth Enterprises',
+        'Category Management',
+        'Contract Lifecycle Management',
+        'Supplier Lifecycle Management',
+        'Third-Party Risk Management',
+        'Intelligent Category Management '
+      ],
+    },
+    {
+      heading: 'iSUPPLY',
+      items: [
+
+        'Supply Chain Visibility and Execution',
+        'Supply Chain Planning',
+        'Supply Chain Collaboration',
+        'Supply Chain Network Optimization',
+        'Should Cost Modeling',
+        'Inventory and Warehouse Management'
+      ],
+    },
+    {
+      heading: 'Managed Services',
+      items: [
+        'Procurement Outsourcing',
+        'Strategic Sourcing',
+        'Tail-Spend Management',
+        'Category Management',
+        'Procurement Support Services',
+        'Supply Chain Outsourcing',
+        'Supply Chain Planning & Forecasting',
+        'Inventory Management Logistics Management'
+      ],
+    },
+    {
+      heading: 'Company',
+      items: [
+        'About Us',
+        'Leadership',
+        'Sustainability at 1IGS',
+        'Careers',
+        'Partners',
+        'Contact Us'
+      ],
+    },
+  ];
 
   const displayedIndustries = showAll ? industries : industries.slice(0, 11);
 
@@ -1345,6 +1428,111 @@ export default function LandingPage() {
               </Grid>
             </Box>
           </Box>
+        </Box>
+
+
+        <Box
+          sx={{
+            position: 'relative',
+            color: '#fff',
+            py: 6,
+            px: 4,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${footer_bg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          {/* Top Icon with centered container */}
+          <Container maxWidth="lg">
+            <Box sx={{ mb: 4, textAlign: 'left' }}>
+              <Box
+                component="img"
+                src={igs_procurement}
+                alt="Footer Icon"
+                sx={{ width: 284, height: 90 }}
+              />
+            </Box>
+
+            {/* Grid of Links with proper padding */}
+            <Grid container spacing={4}>
+              {footerData.map((column, idx) => (
+                <Grid item xs={12} sm={6} md={2} key={idx}>
+                  {/* Column heading */}
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontWeight: 700,
+                      mb: 2,
+                      pl: 2, // Add left padding to align with list items
+                      fontFamily: 'Poppins, sans-serif',
+                      color: '#fff',
+                      fontSize: 12
+                    }}
+                  >
+                    {column.heading}
+                  </Typography>
+
+                  {/* List items container with padding */}
+                  <Box sx={{ pl: 2, pr: 1 }}> {/* Adjust padding values as needed */}
+                    {column.items.map((item, i) => (
+                      <Box key={i}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start', // Align items to top
+                            gap: 1,
+                            mb: 1,
+                            cursor: 'pointer',
+                            '&:hover .item-text': { color: '#fff' },
+                          }}
+                        >
+                          {/* Icon with fixed dimensions */}
+                          <Box
+                            component="img"
+                            src={play_icon}
+                            alt="arrow"
+                            sx={{
+                              width: 5,
+                              height: 6,
+                              minWidth: 5, // Prevent shrinking
+                              mt: '3px' // Optical alignment
+                            }}
+                          />
+
+                          {/* Text container */}
+                          <Box sx={{ flex: 1 }}>
+                            <Typography
+                              className="item-text"
+                              variant="body2"
+                              sx={{
+                                fontSize: 13,
+                                color: '#ccc',
+                                fontFamily: 'Poppins, sans-serif',
+                                lineHeight: 1.4
+                              }}
+                            >
+                              {item}
+                            </Typography>
+                          </Box>
+                        </Box>
+
+                        {/* Divider - now properly aligned below icon */}
+                        {i < column.items.length - 1 && (
+                          <Divider sx={{
+                            borderColor: '#506BA4',
+                            opacity: 0.6,
+                            my: 1,
+                            // ml: 4, // 3 (icon) + 1 (gap)
+                            width: 'calc(100% - 32px)' // 24px icon + gap compensation
+                          }} />
+                        )}
+                      </Box>
+                    ))}
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
         </Box>
 
       </div>
