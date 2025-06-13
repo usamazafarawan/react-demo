@@ -37,6 +37,12 @@ import telecommunicationImage from '../../assets/images/Telecommunication.png';
 import automotiveImage from '../../assets/images/Automotive.png';
 import aviationImage from '../../assets/images/Aviation & Refueling.png';
 
+import logisticsImage from '../../assets/images/image (15).png';
+import meetingImage from '../../assets/images/image (16).png';
+import discussionImage from '../../assets/images/image (17).png';
+import groupImage from '../../assets/images/image (18).png';
+import techImage from '../../assets/images/image 466.png';
+
 
 
 
@@ -120,6 +126,49 @@ export default function LandingPage() {
       image: createImage3,
       button: 'SEE RESULTS, CONTACT US  »',
     },
+  ];
+
+   const supplyChain = [
+    {
+      title: 'Who is 1IGS?',
+      description1: 'We adopt sustainability practices to provide long-term benefits.',
+      description2:
+        '1IGS builds partnerships to drive ROI and long-term growth, helping businesses achieve their goals with future-ready solutions.',
+      image: logisticsImage,
+      button: `Unlock your business's full potential »`,
+    },
+    {
+      title: 'PROVEN EXPERTISE',
+      description1: 'We will achieve this and exceed expectations.',
+      description2:
+        'Our passionate team averages 26 years of experience, providing the insights and support needed to stay ahead in a competitive market.',
+      image: meetingImage,
+      button: 'Discover how we add value  »',
+    },
+    {
+      title: 'Diversity, Equity & Inclusion',
+      description1: 'At 1IGS, We Are Committed to Better Care for Everyone',
+      description2:
+        '1IGS is committed to providing compassionate, reliable, and innovative care, focused on creating lasting, positive change.',
+      image: discussionImage,
+      button: `Let's Build Together  »`,
+    },
+    //     {
+    //   title: 'TOP SUPPLIER SOURCING',
+    //   description1: 'We Apply Our Industry Expertise Both Locally And  Internationally',
+    //   description2:
+    //     'Streamline your supply chain with 1IGS. Find suppliers, source materials, and cut costs to boost ROI in manufacturing, retail, and e-commerce.',
+    //   image: groupImage,
+    //   button: 'Partner with us today  »',
+    // },
+    //     {
+    //   title: 'TAILORED STRATEGIES FOR SUCCESS',
+    //   description1: 'Streamline operations for success and flexibility with 1IGS',
+    //   description2:
+    //     'We provide tailored supply chain solutions to boost efficiency, cut costs, and meet your business goals, delivering clear results.',
+    //   image: techImage,
+    //   button: 'Transform your supply chain  »',
+    // },
   ];
 
 
@@ -922,6 +971,99 @@ export default function LandingPage() {
         </Grid>
       </Grid>
     </Box>
+
+
+          {/* Procurement Section */}
+        <Box sx={{ px: 4, py: 6, backgroundColor: '#f4f9ff', textAlign: 'center' }}>
+          <Typography variant="h5" sx={{
+            fontWeight: 'bold', mb: 1, color: "#2D53A4",
+            fontFamily: "Poppins, sans-serif",
+          }}>
+          Procurement and Supply Chain is Our Game
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 1, maxWidth: 1000, mx: 'auto', textAlign: 'left', fontFamily: "Poppins, sans-serif", color: '#393939' }}>
+At 1IGS, we transform supply chains with resilience, agility, and sustainability. Our strategies deliver efficiency, results, and lasting impact for businesses globally. Upgrade your operations with future-ready solutions.              </Typography>
+
+<Typography variant="body1" sx={{ mb: 1, maxWidth: 1000, mx: 'auto', textAlign: 'left', fontFamily: "Poppins, sans-serif", color: '#393939' }}>
+Upgrade your operations with future-ready solutions.        
+
+   </Typography>
+          {/* Feature Cards */}
+          <Box sx={{ maxWidth: '1000px', mx: 'auto', px: 2, py: 4 }}>
+            <Grid container spacing={3} justifyContent="center">
+              {supplyChain.map((f, idx) => (
+                <Grid item xs={12} sm={6} md={4} key={idx}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      borderRadius: 2,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      textAlign: 'left',
+                      boxShadow: 3,
+                    }}
+                  >
+                    <Box>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
+  <Box component="span" sx={{ color: '#F36434' }}>{f.title}</Box>
+</Typography>
+                      <Box
+                        component="img"
+                        src={f.image}
+                        alt={f.title}
+                        sx={{ width: '100%', borderRadius: 1, mb: 2 }}
+                      />
+                      <Typography variant="h6" sx={{ fontWeight: 300, fontSize: 14 }}>
+                        {f.description1}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{ my: 1, fontWeight: 300, fontSize: 14  }}
+                      >
+                        {f.description2}
+                      </Typography>
+                    </Box>
+
+                    <Button
+                      variant="contained"
+                      sx={{ mt: 2, backgroundColor: '#2D53A4', alignSelf: 'flex-start' }}
+                    >
+                      {f.button}
+                    </Button>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+
+            <Box
+              sx={{
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                mb: 5,
+                mt: 4
+              }}
+            >
+
+             <Button
+  variant="contained"
+  sx={{
+    fontFamily: 'Poppins, sans-serif',
+    backgroundColor: '#F36434',
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#1f3a75', // darker shade on hover
+    },
+  }}
+>
+  CONNECT WITH 1IGS TODAY »
+</Button>
+            </Box>
+        </Box>
       </div>
 
 
