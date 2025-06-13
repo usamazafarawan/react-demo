@@ -18,11 +18,34 @@ import worldSettingImg from '../../assets/images/world-setting.png';
 import linesImage from '../../assets/images/Group.png';
 import chooseUsImage from '../../assets/images/choose-us-image.png';
 
+import agricultureImage from '../../assets/images/agriculture.png';
+import oil_gasImage from '../../assets/images/oil_gas.png';
+import healthcareImage from '../../assets/images/healthcare.png';
+import governmentNgosImage from '../../assets/images/governmentNgos.png';
+import constructionImage from '../../assets/images/construction.png';
+import commoditiesImage from '../../assets/images/commodities.png';
+import energyImage from '../../assets/images/energy.png';
+import financialImage from '../../assets/images/financial.png';
+import industrial_manufacturingImage from '../../assets/images/indistrial_manufacturing.png';
+import retailImage from '../../assets/images/retail.png';
+import miningImage from '../../assets/images/minning.png';
 
-import { Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container, Stack } from "@mui/material";
+import travelImage from '../../assets/images/Travel & Hospitality.png';
+import chemicalsImage from '../../assets/images/Chemicals.png';
+import goodsImage from '../../assets/images/Consumer Packaged Goods.png';
+import telecommunicationImage from '../../assets/images/Telecommunication.png';
+import automotiveImage from '../../assets/images/Automotive.png';
+import aviationImage from '../../assets/images/Aviation & Refueling.png';
+
+
+
+
+import { Typography, Box, Grid, Tabs, Tab, Paper, Button, Divider, Container, Stack,Card, CardActionArea, CardMedia, CardContent, } from "@mui/material";
 export default function LandingPage() {
 
   const [tabIndex, setTabIndex] = React.useState(1);
+  const [showAll, setShowAll] = React.useState(false);
+
 
   const handleChange = (event, newValue) => {
     setTabIndex(newValue);
@@ -98,6 +121,32 @@ export default function LandingPage() {
       button: 'SEE RESULTS, CONTACT US  »',
     },
   ];
+
+
+  const industries = [
+  { title: 'Agriculture', image: agricultureImage },
+  { title: 'Oil & Gas', image:oil_gasImage },
+  { title: 'Healthcare & Life Sciences', image: healthcareImage },
+  { title: 'Government & Nonprofit', image: governmentNgosImage },
+  { title: 'Construction', image: constructionImage },
+  { title: 'Commodities', image: commoditiesImage },
+  { title: 'Energy & Utilities', image:energyImage },
+  { title: 'Financial Services', image: financialImage },
+  { title: 'Industrial Manufacturing', image:industrial_manufacturingImage },
+  { title: 'Retail', image: retailImage },
+  { title: 'Mining', image: miningImage },
+
+
+  // Additional 6 items for "View All"
+  { title: 'Travel & Hospitality', image: travelImage },
+  { title: 'Chemicals', image: chemicalsImage },
+  { title: 'Consumer Packaged Goods', image: goodsImage },
+  { title: 'Telecommunication, Media & Technology', image: telecommunicationImage },
+  { title: 'Automotive', image: automotiveImage},
+  { title: 'Aviation & Refueling', image: aviationImage },
+];
+
+  const displayedIndustries = showAll ? industries : industries.slice(0, 11);
 
   return (
     <div>
@@ -190,6 +239,7 @@ export default function LandingPage() {
               color: "#2D53A4",
               fontFamily: "Poppins, sans-serif",
               fontWeight: "bold",
+              fontSize:50
             }}
             variant="h4"
             align="center"
@@ -207,25 +257,27 @@ export default function LandingPage() {
               <img
                 src={chessImage}
                 alt="chess-icon"
-                style={{ width: 24, height: 24 }}
+                style={{ width: 40, height: 50 }}
               />
               Supply Chain Operations
               <img
                 src={chessImage}
                 alt="chess-icon"
-                style={{ width: 24, height: 24 }}
+                style={{ width: 40, height: 50 }}
               />
             </Box>
           </Typography>
           <Typography sx={{
+            mb:2,
+                          fontSize:20,
             color: "#393939",
             fontFamily: "Poppins, sans-serif",
-          }} align="center" maxWidth="900px" mx="auto" color="text.secondary">
+          }} align="center" maxWidth="1100px" mx="auto" color="text.secondary" >
             Managing procurement and supply chain processes doesn’t have to be complicated. With our one-stop-shop outsourcing services, we simplify your operations, reduce costs, and ensure that your business is stocked and ready to meet demand.
           </Typography>
 
 
-          <Box sx={{ backgroundColor: "#EFF7FE", pb: 2 }}>
+          <Box sx={{ backgroundColor: "#EFF7FE", pb: 2 , pt:1}}>
             <Box sx={{ mt: 4, display: "flex", justifyContent: "center", position: "relative" }}>
               {/* Bottom line */}
               <Box
@@ -257,6 +309,7 @@ export default function LandingPage() {
                     label={label}
                     disableRipple
                     sx={{
+                      fontSize:24,
                       textTransform: "none",
                       fontWeight: "bold",
                       minHeight: 45,
@@ -271,9 +324,9 @@ export default function LandingPage() {
                       transition: "all 0.3s ease-in-out",
                       position: "relative",
                       bottom: tabIndex === index ? 0 : 0, // lift the selected tab a bit to match line
-                      "&:hover": {
-                        backgroundColor: tabIndex === index ? "#2D53A4" : "#f0f0f0",
-                      },
+                      // "&:hover": {
+                      //   backgroundColor: tabIndex === index ? "#2D53A4" : "#f0f0f0",
+                      // },
                     }}
                   />
                 ))}
@@ -809,6 +862,66 @@ export default function LandingPage() {
             </Grid>
           </Grid>
         </Box>
+
+
+
+        {/* Industries Section */}
+
+    <Box sx={{ px: 4, py: 6, backgroundColor: '#fff' }}>
+      <Typography variant="h5" color="#2D53A4" fontWeight='bold' gutterBottom>
+        Industries We Serve
+      </Typography>
+      <Typography variant="body1" maxWidth="1100px" sx={{ mb: 4 ,color:'#393939'  , fontFamily: 'Poppins, sans-serif' }}>
+        Optimize your supply chain and achieve real cost savings with IIGS. Our tailored procurement
+        solutions streamline logistics, cut waste, and enhance efficiency.
+      </Typography>
+
+      <Grid container spacing={2}>
+        {displayedIndustries.map((industry, idx) => (
+          <Grid item xs={6} sm={4} md={2} key={idx}>
+            <Card sx={{ borderRadius: 2, height: '100%' }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="100"
+                  image={industry.image}
+                  alt={industry.title}
+                />
+                <CardContent>
+                  <Typography sx={{color:'#040715'  ,fontSize:12, fontFamily: 'Poppins, sans-serif' }} variant="body2" align="center">
+                    {industry.title}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+
+        <Grid item xs={6} sm={4} md={2}>
+          <Box
+            sx={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#e6f0ff',
+              borderRadius: 2,
+              textAlign: 'center',
+              flexDirection: 'column',
+              py: 2,
+            }}
+          >
+            <Button
+              variant="text"
+              onClick={() => setShowAll(!showAll)}
+              sx={{  fontSize: '0.7rem',color:'#000' }}
+            >
+              {showAll ? 'View Less <<' : 'View All >>'}
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
       </div>
 
 
